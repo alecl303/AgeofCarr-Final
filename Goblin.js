@@ -21,7 +21,7 @@
 		this.ctx.fillStyle = 'pink';
 		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
         var sheet=new Image();
-        sheet.src="pictures/goblin.png";
+        sheet.src="goblin.png";
         var fps = 15;
 		this.animateMove = function(){
             setTimeout(function(){
