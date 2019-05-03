@@ -2,7 +2,7 @@
 		var _this = this;
 		Character.apply(this,arguments);
         this.elem=document.createElement("canvas");
-		$(this.elem).css({position:'absolute',top:200,height:55,width:55});
+		$(this.elem).css({position:'absolute',top:200,height:55,width:55,left:575});
 		console.log($(this.elem).css('height'));
 		this.ctx = this.elem.getContext('2d');
 		
@@ -11,7 +11,7 @@
 		console.log($(this.elem).css('width')+$(this.elem).height)
 	//	game.elem.append(this.elem);
         var spritePosition=0;
-        var spriteWidth=467/7;
+        var spriteWidth=385/7;
         var spriteHeight=62;
         var spriteCount=7;
         this.health = 100;
@@ -21,11 +21,11 @@
 		this.ctx.fillStyle = 'pink';
 		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
         var sheet=new Image();
-        sheet.src="pictures/goblin.png";
+        sheet.src="goblinLeft.png";
         var fps = 15;
 		this.animateMove = function(){
             setTimeout(function(){
-				_this.move(500);
+				//_this.move(500);
                 if(_this.health>0){
                     requestAnimationFrame(_this.animateMove);
                 }
@@ -48,5 +48,5 @@
 			
         }
 	
-	
+		
 	}

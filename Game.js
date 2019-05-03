@@ -5,15 +5,23 @@
 		this.base = new Base(this);
 		this.UIinterface= new Interface(this);
 		this.goblin = new Goblin(this);
+		this.archer = new Archer(this);
 		this.draw = function(target){
 			this.elem.append(this.base.elem);
 			this.elem.append(this.UIinterface.body);
 			target.append(this.elem);
+			
 			//$('body').append(this.base.elem);
 			//this.elem.append(this.goblin.elem);
 		}
 		this.buyCharacter = function(){
 			var goblin = new Goblin(this);
+			
+		}
+		this.destroy = function(obj){
+			//this.elem.remove(obj);
+		//	this.elem.removeChild(obj);
+			$(obj).remove();
 			
 		}
 	}

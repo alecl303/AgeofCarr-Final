@@ -11,6 +11,8 @@
 			$(this.elem).animate({left: destination}, this.xSpd);
 		//	console.log("movingin");
 		}
-	
+		this.setHealth = function(dmg){
+			this.health = this.health - dmg;
+		}
 	
 	}
