@@ -5,6 +5,6 @@ function Interface(game,control) {
 	this.control=control;
 	//METHODS----------------------------------------------------------------------------------------------------------------------------------
 	this.elem= $("<div/>").css({"height":"50px", "width":"100%","backgroundColor":"transparent"});
-	$(_this.elem).append(_this.control.body);
+	$(_this.elem).append(_this.control.draw);
 	//CREATING---------------------------------------------------------------------------------------------------------------------------------s
 }
