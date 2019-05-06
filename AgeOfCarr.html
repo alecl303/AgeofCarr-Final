@@ -2,7 +2,7 @@
 	<head>
 		<style>
 			#do1{
-
+				
 				border: black 2px solid;
 				height:600px;
 				width:1250px;
@@ -11,7 +11,7 @@
 				top:50px;
 			}
 			#do2{
-
+			
 				height:150px;
 				width:300px;
 				zIndex:2;
@@ -23,29 +23,25 @@
 		</style>
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src = Base.js></script>
-
+		
 		<script src = Character.js></script>
+		
+		<script src = Sword.js></script>
 		<script src = Goblin.js></script>
+		
+		<script src = Archer.js></script>
+		<script src = Arrow.js></script>
 		<script src = Game.js></script>
 		<script src = Interface.js></script>
-		<script src = HumanBase.js></script>
-		<script src = Alien.js></script>
-
-		<script src = StartScreen.js></script>
-		<script src = Instructions.js></script>
-
+		<script src = Control.js></script>
 		<script>
 			var game1 = new Game();
-			$(document).ready(function() {
-
+			$(document).ready(function() { 
+		
 				game1.draw($("body"));
 			})
-
 		</script>
-
+		
 	</head>
-	<body>
-
-	</body>
 
 </html>

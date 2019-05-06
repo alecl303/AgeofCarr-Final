@@ -4,20 +4,26 @@
 	//	this.leftArea = $("<div/>")
 		
 		this.base = new Base(this);
-		this.UIinterface= new Interface(this);
+		
+		this.control=new Control(this);
+		this.UIinterface= new Interface(this,this.control);
 		this.characters = {player1:[],player2:[]};
 	//	this.goblin = new Goblin(this,'player1');
 		//this.characters.player1.push(this.goblin);
 		this.archer = new Archer(this,'player2');
 		
+	//	=======
+			
 		this.characters.player2.push(this.archer);
 		this.weapons = {player1:[],player2:[]};
 		//this.weapons.player1.push(this.goblin.weapon);
 		this.collisionTimer;
 	//	console.log(_this.weapons.player2[0]);
 		this.draw = function(target){
+		
+			///this.elem.append(this.base.elem);
 			this.elem.append(this.base.elem);
-			this.elem.append(this.UIinterface.body);
+			this.elem.append(this.UIinterface.elem);
 			var s = new Sword([0,0],this);
 			
 		//	this.elem.append(this.goblin.weapon.elem);
@@ -27,6 +33,7 @@
 			//$('body').append(this.base.elem);
 			//this.elem.append(this.goblin.elem);
 		}
+		
 		this.buyCharacter = function(){
 			var goblin = new Goblin(this,'player1');
 			
@@ -50,6 +57,7 @@
 					this.destroy(weapon.elem);
 				}
 			}
+			
 			
 		}
 				
