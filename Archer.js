@@ -3,13 +3,13 @@
 		Character.apply(this,arguments);
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({position:'absolute',top:200,left:525,backgroundColor:'pink'})
+			.css({position:'absolute',top:parseInt(game.elem.css('height'))-55,left:525,backgroundColor:'pink'})
 			.attr({height:55,width:55});
 		this.ctx = this.elem.getContext('2d');
-		
+
 		this.ctx.translate(0,0);
 		this.ctx.beginPath();
-		
+
 		this.ctx.fillStyle = 'purple';
 		this.ctx.fillRect(0,0,parseInt($(this.elem).attr('width')),parseInt($(this.elem).attr('height')));
 	//	game.elem.append(this.elem);
@@ -31,12 +31,12 @@
 				//_this.move(0);
                 if(_this.health>0){
                     //requestAnimationFrame(_this.animateMove);
-					
+
 					//	console.log("run");
                     if(_this.inRange == true && _this.attacking ==false){
-					
+
                     	attackTimer = setInterval(function(){_this.attack();},1000,'linear');
-                    	     	
+
                     	_this.attacking = true;
                     }
                 }
@@ -44,16 +44,16 @@
                 // Drawing code goes here
            //     _this.ctx.clearRect(0,0,_this.elem.width,_this.elem.height);
            //     _this.ctx.drawImage(sheet,spritePosition*spriteWidth,0,spriteWidth,spriteHeight,0,0,spriteWidth*5,spriteHeight*2.5);
-				//img, x coordinate where starting on spritesheet, sprite sheet y coordinate, width of clipped image, height, x, y , width, height 
-           
-		
+				//img, x coordinate where starting on spritesheet, sprite sheet y coordinate, width of clipped image, height, x, y , width, height
+
+
 
             }, 1000 / fps);
         };
-	
+
 		//sheet.onload=function(){
             _this.animateMove();
-			
+
        // }
        var i =0;
 		this.attack = function(){
@@ -70,7 +70,7 @@
 		//	console.log(side);
 			game.weapons[side].push(arrow);
 		}
-	
-	
+
+
 		//this.onStart();
 	}

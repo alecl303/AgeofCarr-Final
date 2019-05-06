@@ -9,7 +9,7 @@
 		this.ctx = this.elem.getContext('2d');
 
 		this.moveToRight = function(){
-			$(this.elem).css({left: 1499-parseInt($(this.elem).css('width'))});
+			$(this.elem).css({left: 1500-parseInt($(this.elem).css('width'))});
 
 		}
 //		this.moveToRight();
