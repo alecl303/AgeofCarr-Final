@@ -3,12 +3,15 @@
 	//	this.leftArea = $("<div/>")
 		
 		this.base = new Base(this);
-		this.UIinterface= new Interface(this);
+		this.control=new Control(this);
+		this.UIinterface= new Interface(this,this.control);
 		this.goblin = new Goblin(this);
 		this.draw = function(target){
 			this.elem.append(this.base.elem);
-			this.elem.append(this.UIinterface.body);
+			this.elem.append(this.UIinterface.elem);
+			
 			target.append(this.elem);
+			
 			//$('body').append(this.base.elem);
 			//this.elem.append(this.goblin.elem);
 		}
