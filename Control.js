@@ -29,15 +29,10 @@ function Control(game){
 					}
 				);
 			var leftCharacterButton2=$("<img>")
-//<<<<<<< control-images
 				.attr({"src":"goblinarcher.jpg"})
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
 			var leftCharacterButton3=$("<img>")
 				.attr({"src":"goblingiant.jpg"})
-
-				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
-			var leftCharacterButton3=$("<img>")
-//>>>>>>> master
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"210px", "border":"1px solid black"});
 			var leftTurretsBox=$("<img>")
 				.attr({"src":"turret.png"})
@@ -57,10 +52,7 @@ function Control(game){
 		function rightPlayerControl(){
 			var rightPlayerControl=$("<div/>").css({"height":"50px", "width":"400px", "position":"absolute", "top":"10px","left":"840px", "background-color":"lightyellow","border":"2px solid black","z-index":2});
 			var rightCharacterButton1=$("<img>")
-//<<<<<<< control-images
 				.attr({"src":"alienmelee.jpg"})
-//=======
-//>>>>>>> master
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"10px", "border":"1px solid black"})
 				.click(
 					function(){
@@ -68,15 +60,10 @@ function Control(game){
 					}
 				);
 			var rightCharacterButton2=$("<img>")
-//<<<<<<< control-images
 				.attr({"src":"alienshooter.jpg"})
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
 			var rightCharacterButton3=$("<img>")
 				.attr({"src":"alienboss.jpg"})
-//=======
-				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
-			var rightCharacterButton3=$("<img>")
-//>>>>>>> master
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"210px", "border":"1px solid black"});
 			var rightTurretsBox=$("<img>")
 				.attr({"src":"turret.png"})
@@ -96,20 +83,14 @@ function Control(game){
 	function leftTurretDisplay(){
 		var leftTurretControl=$("<div/>").css({"height":"50px", "width":"300px", "position":"absolute", "top":"10px","left":"5px", "background-color":"lightblue","border":"2px solid black","visibility":"hidden"});
 		var leftTurretButton1=$("<img>")
-//<<<<<<< control-images
 			.attr({"src":"goblinturret1.png"})
-//=======
-//>>>>>>> master
 			.css({"height":"45px", "width":"45px", "position":"absolute", "left":"10px", "border":"1px solid black"})
 			.click(
 				function(){
 				}
 			);
 		var leftTurretButton2=$("<img>")
-//<<<<<<< control-images
 			.attr({"src":"goblinturret2.jpg"})
-//=======
-//>>>>>>> master
 			.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
 		var exitButton=$("<img>")
 			.attr({"src":"X.png"})
@@ -128,20 +109,14 @@ function Control(game){
 	function rightTurretDisplay(){
 		var rightTurretControl=$("<div/>").css({"height":"50px", "width":"300px", "position":"absolute", "top":"10px","left":"840px", "background-color":"lightblue","border":"2px solid black","visibility":"hidden"});
 		var rightTurretButton1=$("<img>")
-//<<<<<<< control-images
 			.attr({"src":"alienturret1.jpg"})
-//=======
-//>>>>>>> master
 			.css({"height":"45px", "width":"45px", "position":"absolute", "left":"10px", "border":"1px solid black"})
 			.click(
 				function(){
 				}
 			);
 		var rightTurretButton2=$("<img>")
-//<<<<<<< control-images
 			.attr({"src":"alienturret2.jpg"})
-//=======
-//>>>>>>> master
 			.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
 		var exitButton=$("<img>")
 			.attr({"src":"X.png"})
