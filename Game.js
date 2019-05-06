@@ -21,6 +21,7 @@
 			var s = new Sword([0,0],this);
 			
 		//	this.elem.append(this.goblin.weapon.elem);
+
 			target.append(this.elem);
 			
 			//$('body').append(this.base.elem);

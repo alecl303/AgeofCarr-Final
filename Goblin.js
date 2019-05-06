@@ -25,7 +25,9 @@
 		this.ctx.fillStyle = 'pink';
 		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
         var sheet=new Image();
+
         sheet.src="goblinLeft.png";
+
         var fps = 15;
 		
 		this.weapon = new Sword([parseInt($(this.elem).css('left')),parseInt($(this.elem).css('top'))+35],game);
