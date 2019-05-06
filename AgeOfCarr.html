@@ -25,6 +25,8 @@
 		<script src = Base.js></script>
 		
 		<script src = Character.js></script>
+		
+		<script src = Sword.js></script>
 		<script src = Goblin.js></script>
 		
 		<script src = Archer.js></script>
@@ -36,6 +38,9 @@
 			$(document).ready(function() { 
 		
 				game1.draw($("body"));
+				var s = new Sword([5,5]);
+				document.body.append( $('<div/>')
+			.css({height:10,width:20,backgroundColor:'pink',position:'absolute', left:0,top:0,zIndex:10}));
 			})
 		</script>
 		

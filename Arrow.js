@@ -1,13 +1,15 @@
-	function Arrow(loc,game){
+	function Arrow(loc,game,dmg){
 	//	console.log(loc[1]+"h"+loc[0]);
 		var _this = this;
 		this.game = game;
 		this.elem = $('<div/>').css({height:5,width:10,backgroundColor:'blue',position:'absolute',top:parseInt(loc[1])+10,left:loc[0]});
 		this.timer;
 		this.xSpd = 1000;
+		this.dmg = dmg;
 		this.broken = false;
 		this.range = -100;
 		this.moving = false;
+		this.projectile = true;
 		//$(_this.elem).css('left')-parseInt(_this.range);
 	
 		this.animate = function(){

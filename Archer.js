@@ -1,8 +1,10 @@
-	function Archer(game){
+	function Archer(game,side){
 		var _this = this;
 		Character.apply(this,arguments);
         this.elem=document.createElement("canvas");
-		$(this.elem).css({position:'absolute',top:200,left:0,backgroundColor:'pink'}).attr({height:'55px',width:'55px'});
+		$(this.elem)
+			.css({position:'absolute',top:200,left:525,backgroundColor:'pink'})
+			.attr({height:55,width:55});
 		this.ctx = this.elem.getContext('2d');
 		
 		this.ctx.translate(0,0);
@@ -14,9 +16,12 @@
         this.health = 100;
 		this.xSpd = 2000;
 		this.attackTimer = null;
-			this.game.elem.append(this.elem);
+		this.game.elem.append(this.elem);
 		this.attacking = false;
+		this.range = 100;
 		this.inRange = true;
+		this.dmg = 5;
+		this.health = 100;
         var sheet=new Image();
    //     sheet.src="pictures/goblin.png";
         var fps = 15;
@@ -26,10 +31,13 @@
 				//_this.move(0);
                 if(_this.health>0){
                     //requestAnimationFrame(_this.animateMove);
+					
+					//	console.log("run");
                     if(_this.inRange == true && _this.attacking ==false){
-                    	        attackTimer = setInterval(function(){_this.attack();},1000,'linear');
+					
+                    	attackTimer = setInterval(function(){_this.attack();},1000,'linear');
                     	     	
-                    	        _this.attacking = true;
+                    	_this.attacking = true;
                     }
                 }
 
@@ -51,7 +59,7 @@
 		this.attack = function(){
 			//target.setHealth(this.dmg);
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var arrow = new Arrow(loc,this.game);
+			var arrow = new Arrow(loc,this.game,5);
 			if(i==0){
 				$(arrow.elem).css({backgroundColor:'pink'});
 				i=1;
@@ -59,8 +67,10 @@
 				i=0;
 			}
 			game.elem.append(arrow.elem);
+		//	console.log(side);
+			game.weapons[side].push(arrow);
 		}
-		
 	
 	
+		//this.onStart();
 	}
