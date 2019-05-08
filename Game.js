@@ -3,7 +3,7 @@
 		this.elem = $("<div/>").css({margin:'auto',position: 'relative',border: 'black 2px solid',height:600, width:1250,backgroundColor:'red'});
 	//	this.leftArea = $("<div/>")
 
-		this.base = new Base(this);
+		//this.base = new Base(this);
 
 		this.humanBase = new HumanBase(this);
 		this.alien = new Alien(this);
@@ -14,7 +14,9 @@
 	//	this.goblin = new Goblin(this,'player1');
 		//this.characters.player1.push(this.goblin);
 		this.archer = new Archer(this,'player2');
-
+		this.characters.player1.push(this.humanBase);
+		this.characters.player2.push(this.alien);
+		
 	//	=======
 
 		this.characters.player2.push(this.archer);
@@ -25,7 +27,7 @@
 		this.draw = function(target){
 
 			///this.elem.append(this.base.elem);
-			this.elem.append(this.base.elem);
+	//		this.elem.append(this.base.elem);
 			this.elem.append(this.UIinterface.elem);
 			
 			var s = new Sword([0,0],this);
@@ -60,6 +62,14 @@
 				if(weapon.projectile){
 					this.destroy(weapon.elem);
 				}
+				if(character.health < 0){
+					this.characters[character.side].splice(character);
+					this.destroy($(character.elem));
+					if(character.weapon){
+						this.weapons[character.side].splice(character.weapon);
+						this.destroy($(character.weapon.elem));
+					}
+				}
 			}
 
 
@@ -70,6 +80,7 @@
 			//console.log(character);
 			var charRange = character.range + parseInt($(character.elem).css('left'))+parseInt($(character.elem).attr('width'))/2;
 		//	console.log(enmLoc);
+			//console.log(charRange +"h"+ enmLoc + "-"+charRange +"-"+enmLoc+"-"+parseInt($(enemy.elem).attr('width')));
 			if(charRange > enmLoc && charRange < enmLoc+parseInt($(enemy.elem).attr('width'))){
 				character.inRange = true;
 			//	$(character.elem).stop();
@@ -83,12 +94,12 @@
 			function(){
 			//	console.log(_this.characters.length);
 				//for(var i = 0; i < _this.characters.player1.length+_this.characters.player2.length; i++){
-					for(var f = 0; f < _this.characters.player1.length;f++){
-						for(var j =0; j < _this.characters.player2.length; j++){
+					for(var f = 1; f < _this.characters.player1.length;f++){
+						for(var j = 0; j < _this.characters.player2.length; j++){
 							_this.checkIfInRange(_this.characters.player2[j],_this.characters.player1[f]);
 						}
 					}
-					for(var f = 0; f < _this.characters.player2.length;f++){
+					for(var f = 1; f < _this.characters.player2.length;f++){
 						for(var j =0; j < _this.characters.player1.length; j++){
 							_this.checkIfInRange(_this.characters.player1[j],_this.characters.player2[f]);
 						}
