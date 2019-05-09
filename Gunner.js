@@ -1,33 +1,41 @@
-	function Archer(game,side){
+function Gunner(game,side){
 		var _this = this;
 		Character.apply(this,arguments);
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({position:'absolute',top:parseInt(game.elem.css('height'))-55,left:525,backgroundColor:'pink'})
-			.attr({height:55,width:55});
+			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:1200})
+			.attr({height:73,width:580/8});
+	//	console.log($(this.elem).css('height'));
 		this.ctx = this.elem.getContext('2d');
-
 		this.ctx.translate(0,0);
 		this.ctx.beginPath();
-
-		this.ctx.fillStyle = 'purple';
-		this.ctx.fillRect(0,0,parseInt($(this.elem).attr('width')),parseInt($(this.elem).attr('height')));
+		//console.log($(this.elem).attr('width')+$(this.elem).height)
 	//	game.elem.append(this.elem);
+        var spritePosition=0;
+        var spriteWidth=580/8;
+        var spriteHeight=73;
+        var spriteCount=8;
         this.health = 100;
-		this.xSpd = 2000;
-		this.attackTimer = null;
-		this.game.elem.append(this.elem);
-		this.attacking = false;
+		this.xSpd = 10000;
 		this.range = -100;
-		this.inRange = true;
 		this.dmg = 5;
+		this.side=side;
 		this.health = 100;
+		this.moving = true;
+		this.game.elem.append(this.elem);
+		this.ctx.fillStyle = 'pink';
+		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
         var sheet=new Image();
-   //     sheet.src="pictures/goblin.png";
+
+        sheet.src="gunnerRight.png";
+
         var fps = 15;
-     //   attackTimer = setInterval(function(){_this.attack();},5000,'linear');
+	
+		this.inRange = false;
+		this.attacking=false;
+
 		this.animateMove = function(){
-  			setTimeout(function(){
+            setTimeout(function(){
 
 				if(_this.health>0){
 					if(_this.inRange == true && _this.attacking ==false){
@@ -66,26 +74,25 @@
             }, 1000 / fps);
         };
 
-		//sheet.onload=function(){
-            _this.animateMove();
-
-       // }
-       var i =0;
+	   var i =0;
 		this.attack = function(){
 			//target.setHealth(this.dmg);
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var arrow = new Arrow(loc,this.game,5);
+			var bullet = new Bullet(loc,this.game,5,this.range);
 			if(i==0){
-				$(arrow.elem).css({backgroundColor:'pink'});
+				$(bullet.elem).css({backgroundColor:'pink'});
 				i=1;
 			}else{
 				i=0;
 			}
-			game.elem.append(arrow.elem);
+			game.elem.append(bullet.elem);
 		//	console.log(side);
-			game.weapons[side].push(arrow);
+			game.weapons[side].push(bullet);
 		}
 
+		sheet.onload=function(){
+            _this.animateMove();
 
-		//this.onStart();
+        }
+		_this.move(0);
 	}

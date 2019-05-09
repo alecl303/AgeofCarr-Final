@@ -14,7 +14,7 @@
 		this.UIinterface= new Interface(this,this.control);
 		this.characters = {player1:[],player2:[]};
 		this.characters.player1.push(this.humanBase);
-		this.characters.player2.push(this.alien);
+	//	this.characters.player2.push(this.alien);
 	//	this.goblin = new Goblin(this,'player1');
 		//this.characters.player1.push(this.goblin);
 	//	this.archer = new Archer(this,'player2');
@@ -42,6 +42,18 @@
 			var goblin = new Goblin(this,'player1');
 
 			this.characters.player1.push(goblin);
+		}
+		this.buyGunner = function(){
+			
+			var gunner = new Gunner(this,'player2');
+
+			this.characters.player2.push(gunner);
+		}
+		this.buyArcherGoblin = function(){
+			
+			var archer = new ArcherGoblin(this,'player1');
+
+			this.characters.player1.push(archer);
 		}
 		this.destroy = function(obj){
 			//this.elem.remove(obj);
