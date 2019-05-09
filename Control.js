@@ -100,7 +100,7 @@ function Control(game){
 				)
 				.click(
 					function(){
-						_this.game.buyCharacter();
+						_this.game.buyGunner();
 					}
 				);
 			var rightCharacterButton2=$("<img>")

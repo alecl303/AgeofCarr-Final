@@ -8,6 +8,7 @@
 			}
 			if(evt.which == 87){
 				console.log("w");
+				_this.g.buyArcherGoblin();
 			}
 			if(evt.which == 69){
 				console.log("e");
@@ -24,11 +25,13 @@
 			if(evt.which == 90){
 				console.log("z");
 			}
+			//windows
 			if(evt.which == 103){
 				console.log("7");
 			}
 			if(evt.which == 104){
 				console.log("8");
+				_this.g.buyGunner();
 			}
 			if(evt.which == 105){
 				console.log("9");
@@ -43,6 +46,29 @@
 				console.log("6");
 			}
 			if(evt.which == 97){
+				console.log("1");
+			}
+			///mac
+			if(evt.which == 55){
+				console.log("7");
+			}
+			if(evt.which == 56){
+				console.log("8");
+				_this.g.buyGunner();
+			}
+			if(evt.which == 57){
+				console.log("9");
+			}
+			if(evt.which == 52){
+				console.log("4");
+			}
+			if(evt.which == 53){
+				console.log("5");
+			}
+			if(evt.which == 54){
+				console.log("6");
+			}
+			if(evt.which == 49){
 				console.log("1");
 			}
 			

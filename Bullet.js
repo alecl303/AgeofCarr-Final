@@ -1,10 +1,16 @@
-	function Arrow(loc,game,dmg,range){
+	function Bullet(loc,game,dmg,range){
 	//	console.log(loc[1]+"h"+loc[0]);
 		var _this = this;
 		this.game = game;
-		this.elem = $('<div/>').css({height:5,width:10,backgroundColor:'blue',position:'absolute',top:parseInt(loc[1])+10,left:loc[0]});
+		this.elem = $('<div/>')
+			.css({height:5,width:10,backgroundColor:'blue',position:'absolute',top:parseInt(loc[1])+10,left:loc[0]})
+			.append(
+				$('<img/>')
+					.attr({'src':'bullet.png'})
+					.css({'maxHeight':20,'width':20})	
+			);
 		this.timer;
-		this.xSpd = 1000;
+		this.xSpd = 1540;
 		this.dmg = dmg;
 		this.broken = false;
 		this.range = range;
