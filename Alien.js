@@ -6,7 +6,7 @@ function Alien(game){
   this.drawBase = function(ctx){
     ctx.beginPath();
       ctx.fillStyle = "black";
-      ctx.fillRect(10,100,130,50);
+      ctx.fillRect(10,100,190,100);
 
     ctx.beginPath();
       ctx.arc(75, 75, 50, 0, 2 * Math.PI);
