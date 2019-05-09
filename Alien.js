@@ -4,9 +4,11 @@ function Alien(game){
   Base.apply(this,arguments);
   this.moveToRight();
   this.drawBase = function(ctx){
+	  console.log("alien");
+
     ctx.beginPath();
       ctx.fillStyle = "black";
-      ctx.fillRect(10,100,190,100);
+      ctx.fillRect(10,100,130,50);
 
     ctx.beginPath();
       ctx.arc(75, 75, 50, 0, 2 * Math.PI);
@@ -26,7 +28,7 @@ function Alien(game){
       ctx.fillStyle = "yellow";
       ctx.fill();
 
-      ctx.beginPath();
+    ctx.beginPath();
         ctx.arc(75, 75, 10, 0, 2 * Math.PI);
         ctx.fillStyle = "blue";
         ctx.fill();

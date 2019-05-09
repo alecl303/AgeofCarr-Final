@@ -59,7 +59,7 @@
 		this.attack = function(){
 			//target.setHealth(this.dmg);
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var arrow = new Arrow(loc,this.game,5,this.range);
+			var arrow = new Arrow(loc,this.game,5);
 			if(i==0){
 				$(arrow.elem).css({backgroundColor:'pink'});
 				i=1;
