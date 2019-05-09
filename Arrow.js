@@ -1,4 +1,4 @@
-	function Arrow(loc,game,dmg,range){
+	function Arrow(loc,game,dmg){
 	//	console.log(loc[1]+"h"+loc[0]);
 		var _this = this;
 		this.game = game;
@@ -7,14 +7,14 @@
 		this.xSpd = 1000;
 		this.dmg = dmg;
 		this.broken = false;
-		this.range = range;
+		this.range = -100;
 		this.moving = false;
 		this.projectile = true;
 		//$(_this.elem).css('left')-parseInt(_this.range);
 	
 		this.animate = function(){
 			if(this.moving == false){
-				_this.move(parseInt($(_this.elem).css('left'))+parseInt(_this.range));
+				_this.move(parseInt($(_this.elem).css('left'))-parseInt(_this.range));
 				this.moving=true;
 			}
         	if(_this.broken == false){

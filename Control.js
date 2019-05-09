@@ -39,7 +39,7 @@ function Control(game){
 				)
 				.click(
 					function(){
-						_this.game.buyCharacter();
+						_this.game.buySwordGoblin();
 					}
 				);
 			var leftCharacterButton2=$("<img>")

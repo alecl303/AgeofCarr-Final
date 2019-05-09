@@ -18,10 +18,9 @@
         this.health = 100;
 		this.xSpd = 10000;
 		this.range = 20;
-		this.dmg = 1;
+		this.dmg = 5;
 		this.health = 100;
 		this.moving = true;
-		this.side = side;
 		this.game.elem.append(this.elem);
 		this.ctx.fillStyle = 'pink';
 		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
@@ -71,21 +70,21 @@
 
 		this.attack = function(){
 
-			$(this.weapon.elem).css({left:parseInt($(this.elem).css('left'))+15, top:parseInt($(this.elem).css('top'))+35,display:'block' })
+			$(this.weapon.elem).css({left:parseInt($(this.elem).css('left'))+20, top:parseInt($(this.elem).css('top'))+35,display:'block' })
 			$(this.weapon.elem)
 
 				.animate({left:parseInt($(_this.weapon.elem).css('left'))+parseInt(_this.range)}
 				,500
 				,function(){
-					//$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+20});
+					$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+20});
 					if(_this.health > 0){
 						_this.attack();
 					}else{
 						console.log("dead");
-						//_this.game.characters[side].splice(_this.elem);
-						//_this.game.destroy($(_this.elem));
-						//_this.game.weapons[side].splice(_this.weapon);
-						//_this.game.destroy($(_this.weapon.elem));
+						_this.game.characters[side].splice(_this.elem);
+						_this.game.destroy($(_this.elem));
+						_this.game.weapons[side].splice(_this.weapon);
+						_this.game.destroy($(_this.weapon.elem));
 					}
 				}
 			);
