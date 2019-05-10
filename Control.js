@@ -8,7 +8,7 @@ function Control(game){
 		this.leftTurretDisplay=(function(){return leftTurretDisplay();}());
 		this.rightTurretDisplay=(function(){return rightTurretDisplay();}());
 		this.leftGoldDisplay=$("<div/>").css({"height":"20px", "width":"100px", "position":"absolute", "top":"65px","left":"5px"});
-		this.rightGoldDisplay=$("<div/>").css({"height":"20px", "width":"100px","position":"absolute", "top":"65px","left":"840px"});
+		this.rightGoldDisplay=$("<div/>").css({"height":"20px", "width":"100px","position":"absolute", "top":"65px","left":"840px", "z-index":50});
 		this.draw=function(){
 			var wrapper= $("<div/>");
 			$(wrapper).append(_this.leftPlayerControl);
@@ -100,7 +100,7 @@ function Control(game){
 				)
 				.click(
 					function(){
-						_this.game.buyGunner();
+						_this.game.buyCharacter();
 					}
 				);
 			var rightCharacterButton2=$("<img>")

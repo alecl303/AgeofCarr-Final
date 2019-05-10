@@ -2,22 +2,25 @@
 		var _this = this;
 		this.elem = $("<div/>").css({margin:'auto',position: 'relative',border: 'black 2px solid',height:600, width:1250,backgroundColor:'red'});
 	//	this.leftArea = $("<div/>")
+		
+		this.keycontrols = new KeyControls($(window),this);
+		
+		this.base = new Base(this);
+		
+		this.startScreen = new StartScreen();
+		
+		this.humanBase = new HumanBase(this);
+		this.alien = new Alien(this);
 
-		//this.base = new Base(this);
-
-		this.humanBase = new HumanBase(this,'player2',1000);
-		this.alien = new Alien(this,'player2',2);
-	
-		this.keys = new KeyControls($(window),this);
 		this.control=new Control(this);
 		this.UIinterface= new Interface(this,this.control);
 		this.characters = {player1:[],player2:[]};
-	//	this.goblin = new Goblin(this,'player1');
-		//this.characters.player1.push(this.goblin);
-		//this.archer = new Archer(this,'player2');
 		this.characters.player1.push(this.humanBase);
 		this.characters.player2.push(this.alien);
-		
+	//	this.goblin = new Goblin(this,'player1');
+		//this.characters.player1.push(this.goblin);
+	//	this.archer = new Archer(this,'player2');
+
 	//	=======
 
 	//	this.characters.player2.push(this.archer);
@@ -27,14 +30,11 @@
 	//	console.log(_this.weapons.player2[0]);
 		this.draw = function(target){
 
-			///this.elem.append(this.base.elem);
-	//		this.elem.append(this.base.elem);
+			this.elem.append(this.base.elem);
 			this.elem.append(this.UIinterface.elem);
 			
-			var s = new Sword([0,0],this);
-
-		//	this.elem.append(this.goblin.weapon.elem);
-
+			this.elem.append(this.startScreen.screen);
+			
 			target.append(this.elem);
 
 			//$('body').append(this.base.elem);
@@ -42,6 +42,7 @@
 		}
 
 		this.buySwordGoblin = function(){
+			
 			var goblin = new Goblin(this,'player1');
 
 			this.characters.player1.push(goblin);
@@ -63,28 +64,20 @@
 				if(weapon.projectile){
 					this.destroy(weapon.elem);
 				}
-				if(character.health < 0){
-					console.log(character.side);
-					this.characters[character.side].splice(character);
-					this.destroy($(character.elem));
-					if(character.weapon){
-						this.weapons[character.side].splice(character.weapon);
-						this.destroy($(character.weapon.elem));
-					}
-				}
 			}
 
 
 		}
 
 		this.checkIfInRange = function(enemy, character){
-			console.log('ec');
+		//	console.log(enemy);
+			console.log($(character.elem).css('left'));
 			var enmLoc = parseInt($(enemy.elem).css('left'));
 			//console.log(character);
 			var charRange = character.range + parseInt($(character.elem).css('left'))+parseInt($(character.elem).attr('width'))/2;
 		//	console.log(enmLoc);
-			//console.log(charRange +"h"+ enmLoc + "-"+charRange +"-"+enmLoc+"-"+parseInt($(enemy.elem).attr('width')));
 			if(charRange > enmLoc && charRange < enmLoc+parseInt($(enemy.elem).attr('width'))){
+				console.log("inrange");
 				character.inRange = true;
 			//	$(character.elem).stop();
 
@@ -97,16 +90,17 @@
 			function(){
 			//	console.log(_this.characters.length);
 				//for(var i = 0; i < _this.characters.player1.length+_this.characters.player2.length; i++){
-					for(var f = 1; f < _this.characters.player1.length;f++){
-						for(var j = 0; j < _this.characters.player2.length; j++){
+					for(var f = 0; f < _this.characters.player1.length;f++){
+						for(var j =1; j < _this.characters.player2.length; j++){
 							_this.checkIfInRange(_this.characters.player2[j],_this.characters.player1[f]);
 						}
 					}
-					for(var f = 1; f < _this.characters.player2.length;f++){
-						for(var j =0; j < _this.characters.player1.length; j++){
+					for(var f = 0; f < _this.characters.player2.length;f++){
+						for(var j = 1; j < _this.characters.player1.length; j++){
 							_this.checkIfInRange(_this.characters.player1[j],_this.characters.player2[f]);
 						}
 					}
+
 					for(var f = 0; f < _this.weapons.player1.length;f++){
 						for(var j = 0; j < _this.characters.player2.length;j++){
 							_this.checkCollide(_this.characters.player2[j],_this.weapons.player1[f]);
@@ -122,17 +116,4 @@
 		this.addWeapon = function(wep, side){
 			this.weapons[side].push(wep);
 		}
-		this.endGame = function(){
-			console.log("pay");
-			this.destroyArr(this.characters.player1);
-			this.destroyArr(this.characters.player2);
-			this.destroyArr(this.weapons.player1);
-			this.destroyArr(this.weapons.player2);
-		}
-		this.destroyArr = function(arr){
-			for(var i = 0; i < arr.length; i++){
-				this.destroy($(arr[i].elem));
-			}
-		}
-		//this.endGame();
 	}
