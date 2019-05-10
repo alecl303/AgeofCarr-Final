@@ -1,5 +1,4 @@
-function HumanBase(game){
-  this.health = 1000;
+function HumanBase(game,side,health){
 
   Base.apply(this,arguments);
   this.drawBase = function(ctx){
@@ -7,7 +6,7 @@ function HumanBase(game){
       ctx.moveTo(0,90);
       ctx.lineTo(0,200);
       ctx.lineTo(200,200);
-      ctx.lineTo(160,90);
+      ctx.lineTo(130,90);
       ctx.closePath();
   //	ctx.lineTo(50,50);
     ctx.fillStyle = 'blue';
@@ -34,6 +33,6 @@ function HumanBase(game){
       ctx.fillRect(0,50,50,40);
     
   }
-	this.draw(this.ctx);
-	this.drawBase(this.ctx);
+  this.draw(this.ctx);
+  this.drawBase(this.ctx);
 }
