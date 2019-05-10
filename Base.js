@@ -1,10 +1,11 @@
-	function Base(game){
+	function Base(game,side,health){
 		this.game = game;
-
+		this.side = side;
+		this.health = health
 		this.elem = document.createElement('canvas');
 
 		$(this.elem)
-			.css({zIndex:0,top:600-200,position:'absolute'})
+			.css({zIndex:2,top:600-200,position:'absolute'})
 			.attr({height:200, width:200});
 		this.game.elem.append(this.elem);
 		this.ctx = this.elem.getContext('2d');
@@ -23,6 +24,12 @@
 		}
 		this.drawBase = function(ctx){
 
+		}
+		this.takeDmg = function(dmg){
+			this.health = this.health-dmg;
+			if(this.health <= 0){
+				this.game.endGame();
+			}
 		}
 
 	}
