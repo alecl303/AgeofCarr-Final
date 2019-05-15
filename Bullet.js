@@ -19,6 +19,7 @@
 		this.range = range;
 		this.moving = false;
 		this.projectile = true;
+		this.side = side;
 		//$(_this.elem).css('left')-parseInt(_this.range);
 	
 		this.animate = function(){

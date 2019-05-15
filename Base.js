@@ -1,7 +1,8 @@
 	function Base(game,side,health){
 		this.game = game;
 		this.side = side;
-		this.health = health
+		this.health = health;
+		this.oghealth=health;
 		this.elem = document.createElement('canvas');
 		$(this.elem)
 			.css({zIndex:2,top:600-200,position:'absolute'})
@@ -35,6 +36,8 @@
 		}
 		this.takeDmg = function(dmg){
 			this.health = this.health-dmg;
+			var percentage= (this.health/this.oghealth)*100
+			console.log(percentage);
 			if(this.health <= 0){
 				this.game.endGame();
 			}
