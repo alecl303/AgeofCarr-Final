@@ -70,6 +70,7 @@
 			}
 			if(evt.which == 49){
 				console.log("1");
+				_this.g.destroyChars();
 			}
 			
 		});

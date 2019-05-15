@@ -45,7 +45,10 @@
 				character.takeDmg(weapon.dmg);
 				
 				if(weapon.projectile){
+					this.weapons[weapon.side].splice(this.weapons[weapon.side].indexOf(weapon),1);
+					
 					this.destroy(weapon.elem);
+					
 				}
 				
 				if(character.health < 0){
@@ -89,7 +92,8 @@
 						_this.checkCollide(_this.characters.player1[j],_this.weapons.player2[f]);
 					}
 				}
-		}, 100);
+				
+		}, 300);
 		
 		this.inRangeTimer = setInterval(
 			function(){
@@ -133,5 +137,24 @@
 				$(arr[i].elem).stop();
 				this.destroy($(arr[i].elem));
 			}
+		}
+		this.destroyChars = function(){
+			var arr = this.characters.player1;
+			for(var i = 1; i < arr.length; i++){
+				if(arr[i].attackTimer!=null){
+					clearInterval(arr[i].attackTimer);
+				}
+				$(arr[i].elem).stop();
+				this.destroy($(arr[i].elem));
+			}
+			arr = this.characters.player2;
+			for(var i = 1; i < arr.length; i++){
+				if(arr[i].attackTimer!=null){
+					clearInterval(arr[i].attackTimer);
+				}
+				$(arr[i].elem).stop();
+				this.destroy($(arr[i].elem));
+			}
+		
 		}
 	}
