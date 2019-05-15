@@ -1,8 +1,10 @@
 function Alien(game,side,health){
 
   Base.apply(this,arguments);
+  
+
   this.moveToRight();
-  console.log(this.health);
+  
   this.drawBase = function(ctx){
     ctx.beginPath();
       ctx.fillStyle = "black";

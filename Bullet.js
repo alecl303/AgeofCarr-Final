@@ -1,16 +1,19 @@
-	function Bullet(loc,game,dmg,range){
+	function Bullet(loc,game,dmg,range,side){
 	//	console.log(loc[1]+"h"+loc[0]);
 		var _this = this;
+		
+		Projectile.apply(this,arguments);
+		
 		this.game = game;
 		this.elem = $('<div/>')
-			.css({height:5,width:10,backgroundColor:'blue',position:'absolute',top:parseInt(loc[1])+10,left:loc[0]})
+			.css({height:5,width:10,position:'absolute',top:parseInt(loc[1])+10,left:loc[0]})
 			.append(
 				$('<img/>')
 					.attr({'src':'bullet.png'})
 					.css({'maxHeight':20,'width':20})	
 			);
 		this.timer;
-		this.xSpd = 1540;
+		this.xSpd = 2000;
 		this.dmg = dmg;
 		this.broken = false;
 		this.range = range;
@@ -31,7 +34,10 @@
 		}
 			
 		this.move = function(destination){
-			$(this.elem).animate({left: destination}, this.xSpd,function(){_this.game.destroy(_this.elem)});
+			$(this.elem).animate({left: destination}, this.xSpd,function(){
+				_this.game.destroy(_this.elem);
+				}
+			);
 		//	console.log("movingin");
 		}
 

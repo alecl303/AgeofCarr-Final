@@ -6,6 +6,11 @@
 			.css({position:'absolute',top:parseInt(game.elem.css('height'))-65,left:100})
 			.attr({height:72,width:360/5});
 	//	console.log($(this.elem).css('height'));
+		if(this.side == "player1"){
+			this.addedFront = $(this.elem).css('width');
+		}else{
+			this.addedFront = 0;
+		}
 		this.ctx = this.elem.getContext('2d');
 		this.ctx.translate(0,0);
 		this.ctx.beginPath();
@@ -15,6 +20,7 @@
         var spriteWidth=360/5;
         var spriteHeight=72;
         var spriteCount=5;
+		
         this.health = 100;
 		this.xSpd = 10000;
 		this.range = 300;

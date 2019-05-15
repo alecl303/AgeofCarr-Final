@@ -1,6 +1,8 @@
 function HumanBase(game,side,health){
 
   Base.apply(this,arguments);
+  
+  
   this.drawBase = function(ctx){
     ctx.beginPath();
       ctx.moveTo(0,90);

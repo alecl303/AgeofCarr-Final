@@ -1,4 +1,4 @@
-	function Arrow(loc,game,dmg,range){
+	function Arrow(loc,game,dmg,range,side){
 	//	console.log(loc[1]+"h"+loc[0]);
 		var _this = this;
 		this.game = game;

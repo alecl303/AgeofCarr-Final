@@ -5,8 +5,10 @@
 		this.health = '?';
 		this.cost = '?';
 		this.damage = '?';
-		this.side = '?';
+		this.side = side;
 		this.elem; 
+		this.addedFront;
+
 		this.move = function(destination){
 			$(this.elem).animate({left: destination}, {duration : this.xSpd});
 		//	console.log("movingin");

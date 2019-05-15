@@ -3,11 +3,19 @@
 		this.side = side;
 		this.health = health
 		this.elem = document.createElement('canvas');
-
 		$(this.elem)
 			.css({zIndex:2,top:600-200,position:'absolute'})
 			.attr({height:200, width:200});
+		
+		
 		this.game.elem.append(this.elem);
+		this.addedFront = 0;
+		if(this.side == "player1"){
+			this.addedFront = $(this.elem).attr('width');
+		}else{
+			this.addedFront = 0;
+		}
+		
 		this.ctx = this.elem.getContext('2d');
 
 		this.moveToRight = function(){

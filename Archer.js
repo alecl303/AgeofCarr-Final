@@ -5,6 +5,11 @@
 		$(this.elem)
 			.css({position:'absolute',top:parseInt(game.elem.css('height'))-55,left:525,backgroundColor:'pink'})
 			.attr({height:55,width:55});
+		if(this.side == "player1"){
+			this.addedFront = $(this.elem).attr('width');
+		}else{
+			this.addedFront = 0;
+		}
 		this.ctx = this.elem.getContext('2d');
 
 		this.ctx.translate(0,0);
@@ -13,6 +18,7 @@
 		this.ctx.fillStyle = 'purple';
 		this.ctx.fillRect(0,0,parseInt($(this.elem).attr('width')),parseInt($(this.elem).attr('height')));
 	//	game.elem.append(this.elem);
+	
         this.health = 100;
 		this.xSpd = 2000;
 		this.attackTimer = null;
@@ -74,7 +80,7 @@
 		this.attack = function(){
 			//target.setHealth(this.dmg);
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var arrow = new Arrow(loc,this.game,5);
+			var arrow = new Arrow(loc,this.game,5,this.side);
 			if(i==0){
 				$(arrow.elem).css({backgroundColor:'pink'});
 				i=1;
