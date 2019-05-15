@@ -5,55 +5,61 @@
 		$(this.elem)
 			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:100})
 			.attr({height:62,width:55});
-	//	console.log($(this.elem).css('height'));
+			
+		if(this.side == "player1"){
+			this.addedFront = parseInt($(this.elem).attr('width'))-40;
+		}else{
+			this.addedFront = 0;
+		}
+		
 		this.ctx = this.elem.getContext('2d');
 		this.ctx.translate(0,0);
 		this.ctx.beginPath();
-		//console.log($(this.elem).attr('width')+$(this.elem).height)
-	//	game.elem.append(this.elem);
+		
         var spritePosition=0;
         var spriteWidth=385/7;
         var spriteHeight=62;
         var spriteCount=7;
-        this.health = 100;
-		this.xSpd = 10000;
-		this.range = 20;
-		this.dmg = 5;
-		this.health = 100;
-		this.moving = true;
-		this.game.elem.append(this.elem);
-		this.ctx.fillStyle = 'pink';
-		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
+		
         var sheet=new Image();
-
         sheet.src="goblinLeft.png";
 
         var fps = 15;
 
-		this.weapon = new Sword([parseInt($(this.elem).css('left')),parseInt($(this.elem).css('top'))+35],game);
+        this.health = 10000;
+		this.xSpd = 10000;
+		this.range = 25;
+		this.dmg = 2;
+		this.moving = true;
+		this.game.elem.append(this.elem);
+		
+		this.weapon = new Sword([parseInt($(this.elem).css('left')),parseInt($(this.elem).css('top'))+35],game,this.dmg);
 		this.inRange = false;
 
 		this.animateMove = function(){
             setTimeout(function(){
 
                 if(_this.health>0){
-
-					//   requestAnimationFrame(_this.animateMove);
                    if(_this.inRange == false){
 					   	if(_this.moving == false){
 							_this.move(1200);
+							_this.moving = true;
 						}
-					   requestAnimationFrame(_this.animateMove);
-
-				   }else{
+						
+						_this.weapon.elem.stop();
+						
+						$(_this.weapon.elem).css({display:'none'});
+				   }
+				   else if(_this.inRange){
 					   	if(_this.moving == true){
 							$(_this.elem).stop();
-
-						}
-							_this.attack();
+							_this.moving = false;
+						} 
+						_this.attack();
 					}
+					requestAnimationFrame(_this.animateMove);
                 }
-
+			
 
                 // Drawing code goes here
                 _this.ctx.clearRect(0,0,$(_this.elem).attr('width'),$(_this.elem).attr('height'));
@@ -70,22 +76,14 @@
 
 		this.attack = function(){
 
-			$(this.weapon.elem).css({left:parseInt($(this.elem).css('left'))+20, top:parseInt($(this.elem).css('top'))+35,display:'block' })
-			$(this.weapon.elem)
+			$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+20, top:parseInt($(_this.elem).css('top'))+35,display:'block' })
+			$(_this.weapon.elem)
 
 				.animate({left:parseInt($(_this.weapon.elem).css('left'))+parseInt(_this.range)}
 				,500
 				,function(){
 					$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+20});
-					if(_this.health > 0){
-						_this.attack();
-					}else{
-						console.log("dead");
-						_this.game.characters[side].splice(_this.elem);
-						_this.game.destroy($(_this.elem));
-						_this.game.weapons[side].splice(_this.weapon);
-						_this.game.destroy($(_this.weapon.elem));
-					}
+					
 				}
 			);
 		}
