@@ -49,6 +49,12 @@
 
 			this.characters.player1.push(goblin);
 		}
+		this.buyGunner = function(){
+
+			var gunner = new Gunner(this,'player2');
+
+			this.characters.player2.push(gunner);
+		}
 		this.destroy = function(obj){
 			//this.elem.remove(obj);
 		//	this.elem.removeChild(obj);
