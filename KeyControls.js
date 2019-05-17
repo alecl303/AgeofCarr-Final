@@ -11,7 +11,8 @@
 				_this.g.buyArcherGoblin();
 			}
 			if(evt.which == 69){
-				console.log("e");
+				console.log("e goku");
+				_this.g.buyGoku();
 			}
 			if(evt.which == 65){
 				console.log("a");
@@ -51,7 +52,6 @@
 			///mac
 			if(evt.which == 55){
 				console.log("7");
-				_this.g.buyAlien();
 			}
 			if(evt.which == 56){
 				console.log("8");

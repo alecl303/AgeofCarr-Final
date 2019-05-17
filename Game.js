@@ -34,9 +34,10 @@
 
 			this.characters.player2.push(gunner);
 		}
-		this.buyAlien = function(){
-			var alien = new alienMelee(this,'player2');
-			this.characters.player2.push(alien);
+		this.buyGoku = function(){
+			var goku = new Goku(this,'player1');
+
+			this.characters.player1.push(goku);
 		}
 		this.destroy = function(obj){
 			$(obj).remove();
