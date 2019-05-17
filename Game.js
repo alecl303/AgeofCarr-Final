@@ -34,6 +34,10 @@
 
 			this.characters.player2.push(gunner);
 		}
+		this.buyAlien = function(){
+			var alien = new alienMelee(this,'player2');
+			this.characters.player2.push(alien);
+		}
 		this.destroy = function(obj){
 			$(obj).remove();
 		}

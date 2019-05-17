@@ -51,6 +51,7 @@
 			///mac
 			if(evt.which == 55){
 				console.log("7");
+				_this.g.buyAlien();
 			}
 			if(evt.which == 56){
 				console.log("8");
