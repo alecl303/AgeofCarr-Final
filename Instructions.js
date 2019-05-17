@@ -10,7 +10,7 @@ function Instructions(){
 
 		this.instructionsP1 = $("<div/>")
 			.css({backgroundColor: "yellow",zIndex:101,height:60,width:520,fontWeight: "bold",fontSize:'50px',margin:"auto",textAlign:"center",position:'relative',top:30,padding:5,float:'left'})
-			.text("Player 1 (Goblin)");
+			.text("Player 1 (Human)");
 
 		this.instructions1Desc = $("<div/>")
 			.css({backgroundColor: "pink",zIndex:101,height:"auto",width:520,fontSize:'40px',margin:"auto",position:'absolute',top:175,padding:5,float:'left'})

@@ -1,130 +1,159 @@
 	function Game(){
 		var _this = this;
-		this.elem = $("<div/>").css({zIndex:60,margin:'auto',position: 'relative',border: 'black 2px solid',height:600, width:1250,backgroundColor:'red'});
-	//	this.leftArea = $("<div/>")
+		this.elem = $("<div/>").css({margin:'auto',position: 'relative',border: 'black 2px solid',height:600, width:1250,backgroundColor:'red'});
 
-		this.keycontrols = new KeyControls($(window),this);
-
-		this.base = new Base(this);
-
-		this.startScreen = new StartScreen(this);
-		this.instructions = new Instructions(this);
-
-		this.humanBase = new HumanBase(this);
-		this.alien = new Alien(this);
-
+		this.humanBase = new HumanBase(this,'player1',1000);
+		this.alien = new Alien(this,'player2',1000);
+	
+		this.keys = new KeyControls($(window),this);
 		this.control=new Control(this);
 		this.UIinterface= new Interface(this,this.control);
+		
 		this.characters = {player1:[],player2:[]};
 		this.characters.player1.push(this.humanBase);
 		this.characters.player2.push(this.alien);
-	//	this.goblin = new Goblin(this,'player1');
-		//this.characters.player1.push(this.goblin);
-	//	this.archer = new Archer(this,'player2');
-
 	//	=======
-
-	//	this.characters.player2.push(this.archer);
 		this.weapons = {player1:[],player2:[]};
-		//this.weapons.player1.push(this.goblin.weapon);
 		this.collisionTimer;
-	//	console.log(_this.weapons.player2[0]);
+		this.inRangeTimer;
 		this.draw = function(target){
 
-			this.elem.append(this.base.elem);
 			this.elem.append(this.UIinterface.elem);
 
-			this.elem.append(this.startScreen.screen);
-			this.elem.append(this.instructions.screen);
 
 			target.append(this.elem);
-
-			//$('body').append(this.base.elem);
-			//this.elem.append(this.goblin.elem);
 		}
 
 		this.buySwordGoblin = function(){
-
 			var goblin = new Goblin(this,'player1');
 
 			this.characters.player1.push(goblin);
 		}
 		this.buyGunner = function(){
-
 			var gunner = new Gunner(this,'player2');
 
 			this.characters.player2.push(gunner);
 		}
 		this.destroy = function(obj){
-			//this.elem.remove(obj);
-		//	this.elem.removeChild(obj);
 			$(obj).remove();
-
 		}
 		this.checkCollide = function(character, weapon){
 			var leftLocChar = parseInt($(character.elem).css('left'));
 			var weaponLoc = parseInt($(weapon.elem).css('left')) + parseInt($(weapon.elem).css('width'))/2;
-		//	console.log(leftLocChar + "-" + weaponLoc + "-" + ( ($(character.elem).attr('width'))));
-		//	console.log(parseInt($(character.elem).css('left')) +" -"+parseInt($(weapon.elem).css('left')));
-			if(leftLocChar < weaponLoc && (leftLocChar +  parseInt($(character.elem).attr('width')) > weaponLoc)){
-				//console.log('hit');
+
+			if(leftLocChar < weaponLoc && (leftLocChar+ parseInt($(character.elem).css('width')) > weaponLoc)){
 				character.takeDmg(weapon.dmg);
+				
 				if(weapon.projectile){
+					this.weapons[weapon.side].splice(this.weapons[weapon.side].indexOf(weapon),1);
 					this.destroy(weapon.elem);
+					
+				}
+				
+				if(character.health < 0){
+					if(character.attackTimer!=null){
+						clearInterval(character.attackTimer);
+					}
+					this.characters[character.side].indexOf(character);
+					this.characters[character.side].splice(this.characters[character.side].indexOf(character),1);
+					this.destroy($(character.elem));
+					if(character.weapon){
+						weapon.elem.stop();
+						this.weapons[character.side].splice(this.weapons[character.side].indexOf(character.weapon),1);
+						this.destroy($(character.weapon.elem));
+					}
 				}
 			}
-
-
 		}
 
 		this.checkIfInRange = function(enemy, character){
-		//	console.log(enemy);
-			console.log($(character.elem).css('left'));
-			var enmLoc = parseInt($(enemy.elem).css('left'));
-			//console.log(character);
-			var charRange = character.range + parseInt($(character.elem).css('left'))+parseInt($(character.elem).attr('width'))/2;
-		//	console.log(enmLoc);
-			if(charRange > enmLoc && charRange < enmLoc+parseInt($(enemy.elem).attr('width'))){
-				console.log("inrange");
-				character.inRange = true;
-			//	$(character.elem).stop();
-
+			var enmLoc = parseInt($(enemy.elem).css('left'))+parseInt(enemy.addedFront);
+		
+			var charRange = character.range;
+			var charLoc =parseInt($(character.elem).css('left'))+parseInt(character.addedFront);
+			var dis = Math.abs(enmLoc - charLoc);
+			if(dis < Math.abs(charRange)){
+				return true;
 			}else{
-
-				character.inRange = false;
+				return false;
 			};
 		}
+	
 		this.collisionTimer = setInterval(
 			function(){
-			//	console.log(_this.characters.length);
-				//for(var i = 0; i < _this.characters.player1.length+_this.characters.player2.length; i++){
-					for(var f = 0; f < _this.characters.player1.length;f++){
-						for(var j =1; j < _this.characters.player2.length; j++){
-							_this.checkIfInRange(_this.characters.player2[j],_this.characters.player1[f]);
+				for(var f = 0; f < _this.weapons.player1.length;f++){
+					for(var j = 0; j < _this.characters.player2.length;j++){
+						_this.checkCollide(_this.characters.player2[j],_this.weapons.player1[f]);
+					}
+				}
+				for(var f = 0; f < _this.weapons.player2.length;f++){
+					for(var j = 0; j < _this.characters.player1.length;j++){
+						_this.checkCollide(_this.characters.player1[j],_this.weapons.player2[f]);
+					}
+				}
+				
+		}, 300);
+		
+		this.inRangeTimer = setInterval(
+			function(){
+				for(var f = 1; f < _this.characters.player1.length;f++){
+						for(var j = 0; j < _this.characters.player2.length; j++){
+							var temp = _this.checkIfInRange(_this.characters.player2[j],_this.characters.player1[f]);
+							if(temp){
+								_this.characters.player1[f].inRange = true;
+								j =_this.characters.player2.length;
+							}else{
+								_this.characters.player1[f].inRange = false;
+							}
 						}
 					}
-					for(var f = 0; f < _this.characters.player2.length;f++){
-						for(var j = 1; j < _this.characters.player1.length; j++){
-							_this.checkIfInRange(_this.characters.player1[j],_this.characters.player2[f]);
+					for(var f = 1; f < _this.characters.player2.length;f++){
+						for(var j =0; j < _this.characters.player1.length; j++){
+							var temp = _this.checkIfInRange(_this.characters.player1[j],_this.characters.player2[f]);
+							if(temp){
+								_this.characters.player2[f].inRange = true;
+								j =_this.characters.player1.length;
+							}else{
+								_this.characters.player2[f].inRange = false;
+							}
 						}
-					}
-
-					for(var f = 0; f < _this.weapons.player1.length;f++){
-						for(var j = 0; j < _this.characters.player2.length;j++){
-							_this.checkCollide(_this.characters.player2[j],_this.weapons.player1[f]);
-						}
-					}
-					for(var f = 0; f < _this.weapons.player2.length;f++){
-						for(var j = 0; j < _this.characters.player1.length;j++){
-							_this.checkCollide(_this.characters.player1[j],_this.weapons.player2[f]);
-						}
-					}
-				//}
-		}, 100);
+					}				
+			
+			},100);
+		
 		this.addWeapon = function(wep, side){
 			this.weapons[side].push(wep);
 		}
-		this.openInstructions = function(){
-				this.instructions.screen.css({'display':'block'});
+		this.endGame = function(){
+			console.log("pay");
+			this.destroyArr(this.characters.player1);
+			this.destroyArr(this.characters.player2);
+			this.destroyArr(this.weapons.player1);
+			this.destroyArr(this.weapons.player2);
+		}
+		this.destroyArr = function(arr){
+			for(var i = 0; i < arr.length; i++){
+				$(arr[i].elem).stop();
+				this.destroy($(arr[i].elem));
+			}
+		}
+		this.destroyChars = function(){
+			var arr = this.characters.player1;
+			for(var i = 1; i < arr.length; i++){
+				if(arr[i].attackTimer!=null){
+					clearInterval(arr[i].attackTimer);
+				}
+				$(arr[i].elem).stop();
+				this.destroy($(arr[i].elem));
+			}
+			arr = this.characters.player2;
+			for(var i = 1; i < arr.length; i++){
+				if(arr[i].attackTimer!=null){
+					clearInterval(arr[i].attackTimer);
+				}
+				$(arr[i].elem).stop();
+				this.destroy($(arr[i].elem));
+			}
+		
 		}
 	}
