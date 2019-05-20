@@ -15,6 +15,8 @@
 			}
 			if(evt.which == 65){
 				console.log("a");
+				$(_this.g.control.leftPlayerControl).css("visibility", "hidden");
+				$(_this.g.control.leftTurretDisplay).css("visibility", "visible");
 			}
 			if(evt.which == 83){
 				console.log("s");
@@ -24,10 +26,40 @@
 			}
 			if(evt.which == 90){
 				console.log("z");
+				$(_this.g.control.leftPlayerControl).css("visibility", "visible");
+				$(_this.g.control.leftTurretDisplay).css("visibility", "block");
+			}
+			if(evt.which == 73){
+				console.log("i");
+				_this.g.buyAlien();
+			}
+			if(evt.which == 79){
+				console.log("o");
+				_this.g.buyGunner();
+			}
+			if(evt.which == 80){
+				console.log("p");
+			}
+			if(evt.which == 74){
+				console.log("j");
+				$(_this.g.control.rightPlayerControl).css("visibility", "hidden");
+				$(_this.g.control.rightTurretDisplay).css("visibility", "visible");
+			}
+			if(evt.which == 75){
+				console.log("k");
+			}
+			if(evt.which == 76){
+				console.log("l");
+			}
+			if(evt.which == 78){
+				console.log("n");
+				$(_this.g.control.rightPlayerControl).css("visibility", "visible");
+				$(_this.g.control.rightTurretDisplay).css("visibility", "block");
 			}
 			//windows
 			if(evt.which == 103){
 				console.log("7");
+				_this.g.buyAlien();
 			}
 			if(evt.which == 104){
 				console.log("8");
@@ -62,6 +94,8 @@
 			}
 			if(evt.which == 52){
 				console.log("4");
+				$(_this.g.control.rightPlayerControl).css("visibility", "hidden");
+				$(_this.g.control.rightTurretDisplay).css("visibility", "visible");
 			}
 			if(evt.which == 53){
 				console.log("5");
@@ -71,6 +105,8 @@
 			}
 			if(evt.which == 49){
 				console.log("1");
+				$(_this.g.control.rightPlayerControl).css("visibility", "visible");
+				$(_this.g.control.rightTurretDisplay).css("visibility", "block");
 				_this.g.destroyChars();
 			}
 			
