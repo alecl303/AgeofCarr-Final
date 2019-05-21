@@ -26,7 +26,7 @@ function alienMelee(game,side){
         
      this.health = 100;
 	this.xSpd = 10000;
-	this.range = -200;
+	this.range = 10;
 	this.dmg = 5;
 	this.side=side;
 	this.moving = true;
@@ -34,51 +34,62 @@ function alienMelee(game,side){
 	this.attacking = false;
 	this.attackSpeed = 400;
 	this.attackTimer;
-		
+	this.weapon = new Sword([parseInt($(this.elem).css('left')),parseInt($(this.elem).css('top'))+35],game,this.dmg);
+	this.game.elem.append(this.weapon.elem);
+	
 	this.animateMove = function(){
-    	setTimeout(function(){
-			if(_this.health>0){
-				if(_this.inRange == true && _this.attacking ==false){
-                    _this.attackTimer = setInterval(function(){_this.attack();},400,'linear');
-                    _this.attacking = true;
-					_this.moving = false;
-					$(_this.elem).stop();
-                }
-                if(_this.inRange == false){
-					
-					if(_this.moving == false){
-						_this.move(0);
-						clearInterval(_this.attackTimer);
-						_this.attacking =false;
-						_this.moving = true;
+            setTimeout(function(){
+
+                if(_this.health>0){
+                   if(_this.inRange == false){
+					   	if(_this.moving == false){
+							_this.move(0);
+							_this.moving = true;
+						}
+						
+						_this.weapon.elem.stop();
+						
+						$(_this.weapon.elem).css({display:'none'});
+				   }
+				   else if(_this.inRange){
+					   	if(_this.moving == true){
+							$(_this.elem).stop();
+							_this.moving = false;
+						} 
+						_this.attack();
 					}
-				 }
-				   
 					requestAnimationFrame(_this.animateMove);
+                }
+			
 
-            }
                 // Drawing code goes here
-            _this.ctx.clearRect(0,0,$(_this.elem).attr('width'),$(_this.elem).attr('height'));
-             _this.ctx.drawImage(sheet,spritePosition*spriteWidth,0,spriteWidth,spriteHeight,0,0,spriteWidth,spriteHeight);
+                _this.ctx.clearRect(0,0,$(_this.elem).attr('width'),$(_this.elem).attr('height'));
+                _this.ctx.drawImage(sheet,spritePosition*spriteWidth,0,spriteWidth,spriteHeight,0,0,spriteWidth,spriteHeight);
 				//img, x coordinate where starting on spritesheet, sprite sheet y coordinate, width of clipped image, height, x, y , width, height
-             spritePosition++;
+                spritePosition++;
 
-             if(spritePosition>spriteCount-1){
-                spritePosition=0;
-             }
+                if(spritePosition>spriteCount-1){
+                    spritePosition=0;
+                }
 
-        }, 1000 / fps);
+            }, 1000 / fps);
      };
-
 	this.attack = function(){
-		var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-		var bullet = new Bullet(loc,this.game,5,this.range,this.side);
-		game.elem.append(bullet.elem);
-		game.weapons[side].push(bullet);
+	//	console.log("attack");
+		$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))-20, top:parseInt($(_this.elem).css('top'))+35,display:'block' })
+		$(_this.weapon.elem)
+			.animate({left:parseInt($(_this.weapon.elem).css('left'))+parseInt(_this.range)}
+			,500
+			,function(){
+				$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))-20});		
+			}
+		);
 	}
 
 	sheet.onload=function(){
         _this.animateMove();
      }
+     
+	this.addWep();
 	_this.move(0);
 }
