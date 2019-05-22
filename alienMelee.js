@@ -27,7 +27,7 @@ function alienMelee(game,side){
      this.health = 100;
 	this.xSpd = 10000;
 	this.range = 25;
-	this.dmg = 2;
+	this.dmg = 10;
 	this.side=side;
 	this.moving = true;
 	this.inRange = false;
@@ -79,7 +79,7 @@ function alienMelee(game,side){
 			.animate({left:parseInt($(_this.weapon.elem).css('left'))-parseInt(_this.range)}
 			,500
 			,function(){
-				$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))-20});
+				$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+30});
 					
 			}
 		);

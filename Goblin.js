@@ -26,7 +26,7 @@
 
         var fps = 15;
 
-        this.health = 10000;
+        this.health = 100;
 		this.xSpd = 10000;
 		this.range = 25;
 		this.dmg = 2;

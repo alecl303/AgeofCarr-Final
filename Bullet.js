@@ -6,7 +6,7 @@
 		
 		this.game = game;
 		this.elem = $('<div/>')
-			.css({height:5,width:10,position:'absolute',top:parseInt(loc[1])+10,left:loc[0]})
+			.css({height:5,width:10,position:'absolute',top:parseInt(loc[1])+27,left:loc[0]})
 			.append(
 				$('<img/>')
 					.attr({'src':'bullet.png'})
