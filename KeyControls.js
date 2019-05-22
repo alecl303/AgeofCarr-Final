@@ -12,6 +12,7 @@
 			}
 			if(evt.which == 69){
 				console.log("e");
+				_this.g.buyGoku();
 			}
 			if(evt.which == 65){
 				console.log("a");

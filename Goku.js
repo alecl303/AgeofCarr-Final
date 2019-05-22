@@ -31,7 +31,7 @@
         this.health = 100;
 		this.xSpd = 10000;
 		this.range = 200;
-		this.dmg = 5;
+		this.dmg = 5000;
 		this.side=side;
 		this.moving = true;
 		this.inRange = false;
@@ -77,7 +77,7 @@
 
 		this.attack = function(){
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var laser = new Laser(loc,this.game,5,this.range,this.side);
+			var laser = new Laser(loc,this.game,5,this.range+2,this.side);
 			game.elem.append(laser.elem);
 			game.weapons[side].push(laser);
 		
