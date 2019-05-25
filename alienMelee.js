@@ -1,4 +1,4 @@
-function alienMelee(game,side){
+function AlienMelee(game,side){
 	var _this = this;
 	Character.apply(this,arguments);
     this.elem=document.createElement("canvas");
@@ -18,13 +18,13 @@ function alienMelee(game,side){
 	this.ctx.beginPath();
     var sheet=new Image();
     sheet.src="alienRunningSpreadSheet.png";
-     var fps = 15;
+    var fps = 5;
     var spritePosition=0;
-     var spriteWidth=350/6;
-     var spriteHeight=80;
-     var spriteCount=6;
+    var spriteWidth=350/6;
+    var spriteHeight=80;
+    var spriteCount=6;
         
-     this.health = 100;
+    this.health = 100;
 	this.xSpd = 10000;
 	this.range = 25;
 	this.dmg = 10;

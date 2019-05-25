@@ -24,16 +24,19 @@
 		//$(_this.elem).css('left')-parseInt(_this.range);
 	
 		this.animate = function(){
-			if(_this.width < Math.abs(_this.range)){
-			
-			_this.width += 5;
-				$(_this.elem)
-					.css({width:_this.width});
-            }else{
-            	_this.game.destroy(_this.elem);
-            }
-            
-    	    requestAnimationFrame(_this.animate);
+			setTimeout(
+				function(){
+					if(_this.width < Math.abs(_this.range)+2){
+				
+					_this.width += 2;
+					$(_this.elem)
+							.css({width:_this.width});
+					}else{
+						_this.game.destroy(_this.elem);
+					}
+				
+					requestAnimationFrame(_this.animate);
+				},25);
 		}
 			
 		this.move = function(destination){
