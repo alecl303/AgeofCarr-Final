@@ -21,7 +21,7 @@ function Gunner(game,side){
         var sheet=new Image();
         sheet.src="gunnerRight.png";
 		
-        var fps = 15;
+        var fps = 5;
 		
         var spritePosition=0;
         var spriteWidth=580/8;
