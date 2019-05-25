@@ -1,6 +1,6 @@
-	function KeyControls(elem,game){
+	function KeyControls(elem,store){
 		var _this = this;
-		this.g = game;
+		this.g = store;
 		$(elem).keydown(function(evt){
 			if(evt.which == 81){
 				console.log("q");
