@@ -23,6 +23,8 @@ function EndScreen(game){
     .text("HOME SCREEN")
     .click(function(){
       $(_this.game.endScreen.screen).css({"display":"none"});
+      $(_this.game.startScreen.screen).css({"display":"block"});
+
   }	);
 
   this.draw = function(){
