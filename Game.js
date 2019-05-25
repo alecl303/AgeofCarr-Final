@@ -4,14 +4,15 @@
 
 		this.humanBase = new HumanBase(this,'player1',1000);
 		this.alien = new Alien(this,'player2',1000);
-	
+
 		this.keys = new KeyControls($(window),this);
 		this.control=new Control(this);
 		this.UIinterface= new Interface(this,this.control);
 		this.startScreen = new StartScreen(this);
 		this.instructions = new Instructions(this);
 		this.objectiveAndRules = new ObjectiveAndRules(this);
-		//this.endScreen = new EndScreen(this);
+		this.endScreen = new EndScreen(this);
+
 		this.characters = {player1:[],player2:[]};
 		this.characters.player1.push(this.humanBase);
 		this.characters.player2.push(this.alien);
@@ -26,7 +27,7 @@
 			this.elem.append(this.startScreen.screen);
 			this.elem.append(this.instructions.screen);
 			this.elem.append(this.objectiveAndRules.screen);
-
+			this.elem.append(this.endScreen.screen);
 			target.append(this.elem);
 		}
 
@@ -59,13 +60,13 @@
 
 				if(leftLocChar < weaponLoc && (leftLocChar+ parseInt($(character.elem).css('width')) > weaponLoc)){
 					character.takeDmg(weapon.dmg);
-				
+
 					if(weapon.projectile){
 						this.weapons[weapon.side].splice(this.weapons[weapon.side].indexOf(weapon),1);
 						this.destroy(weapon.elem);
-					
+
 					}
-				
+
 					if(character.health < 0){
 						if(character.attackTimer!=null){
 							clearInterval(character.attackTimer);
@@ -85,7 +86,7 @@
 
 		this.checkIfInRange = function(enemy, character){
 			var enmLoc = parseInt($(enemy.elem).css('left'))+parseInt(enemy.addedFront);
-		
+
 			var charRange = character.range;
 			var charLoc =parseInt($(character.elem).css('left'))+parseInt(character.addedFront);
 			var dis = Math.abs(enmLoc - charLoc);
@@ -95,7 +96,7 @@
 				return false;
 			};
 		}
-	
+
 		this.collisionTimer = setInterval(
 			function(){
 				for(var f = 0; f < _this.weapons.player1.length;f++){
@@ -108,9 +109,9 @@
 						_this.checkCollide(_this.characters.player1[j],_this.weapons.player2[f]);
 					}
 				}
-				
+
 		}, 300);
-		
+
 		this.inRangeTimer = setInterval(
 			function(){
 				for(var f = 1; f < _this.characters.player1.length;f++){
@@ -134,10 +135,10 @@
 								_this.characters.player2[f].inRange = false;
 							}
 						}
-					}				
-			
+					}
+
 			},100);
-		
+
 		this.addWeapon = function(wep, side){
 			this.weapons[side].push(wep);
 		}
@@ -171,6 +172,7 @@
 				$(arr[i].elem).stop();
 				this.destroy($(arr[i].elem));
 			}
+			
 		}
 		this.openInstructions = function(){
 			this.instructions.screen.css({'display':'block'});
@@ -178,6 +180,6 @@
 		this.openObjectiveAndRules = function(){
 			this.objectiveAndRules.screen.css({'display':'block'});
 		}
-		
-		
+
+
 	}
