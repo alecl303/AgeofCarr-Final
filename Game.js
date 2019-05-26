@@ -2,10 +2,10 @@
 		var _this = this;
 		this.elem = $("<div/>").css({margin:'auto',position: 'relative',border: 'black 2px solid',height:600, width:1250,backgroundColor:'red'});
 
-		this.humanBase = new HumanBase(this,'player1',1000);
-		this.alien = new Alien(this,'player2',1000);
+	//	this.humanBase = new HumanBase(this,'player1',1000);
+	//	this.alien = new Alien(this,'player2',1000);
 	
-		
+		this.playing = false;
 		this.control=new Control(this);
 		this.UIinterface= new Interface(this,this.control);
 		this.startScreen = new StartScreen(this);
@@ -14,11 +14,11 @@
 		this.endScreen = new EndScreen(this);
 		//this.endScreen = new EndScreen(this);
 		this.characters = {player1:[],player2:[]};
-		this.characters.player1.push(this.humanBase);
-		this.characters.player2.push(this.alien);
+	//	this.characters.player1.push(this.humanBase);
+	//	this.characters.player2.push(this.alien);
 		
 		this.store = new Store(this.characters,this);
-		this.keys = new KeyControls($(window),this.store);
+		this.keys = new KeyControls($(window),this.store,this);
 	//	=======
 		this.weapons = {player1:[],player2:[]};
 		this.collisionTimer;
@@ -34,7 +34,7 @@
 			
 			target.append(this.elem);
 		}
-	
+		console.log($(this.elem).css("opacity"))
 		this.destroy = function(obj){
 			$(obj).remove();
 		}
@@ -69,7 +69,18 @@
 				}
 			}
 		}
-
+		this.createBases = function(arrP1,arrP2,game){
+			var base1 = new HumanBase(game,'player1',1000);
+			var base2 = new Alien(game,'player2',1000);
+			arrP1.push(base1);
+			arrP2.push(base2);
+			console.log(this.characters.player1)
+				console.log(this.characters.player2)
+		}
+		this.startGame = function(){
+			this.playing = true;
+			this.createBases(this.characters.player1,this.characters.player2,this);
+		}
 		this.checkIfInRange = function(enemy, character){
 			var enmLoc = parseInt($(enemy.elem).css('left'))+parseInt(enemy.addedFront);
 		
@@ -129,16 +140,28 @@
 			this.weapons[side].push(wep);
 		}
 		this.endGame = function(){
-			console.log("pay");
+			this.playing = false;
+			this.destroy(this.characters.player1[0].healthbox);
+			this.destroy(this.characters.player1[0].healthbox);
+			
+			this.destroy(this.characters.player2[0].healthbox);
+			this.destroy(this.characters.player2[0].healthbox);
+			
 			this.destroyArr(this.characters.player1);
 			this.destroyArr(this.characters.player2);
-			this.destroyArr(this.weapons.player1);
+			
+			//this.destroyArr(this.weapons.player1);
 			this.destroyArr(this.weapons.player2);
+			
+			console.log(this.characters.player1);
+			
+			console.log(this.characters.player2);
 		}
 		this.destroyArr = function(arr){
-			for(var i = 0; i < arr.length; i++){
+			for(var i = arr.length-1; i >= 0; i--){
 				$(arr[i].elem).stop();
 				this.destroy($(arr[i].elem));
+				arr.pop();
 			}
 		}
 		this.destroyChars = function(){
@@ -166,5 +189,8 @@
 			this.objectiveAndRules.screen.css({'display':'block'});
 		}
 		
-		
+		this.openEndScreen = function(){
+			//code u had before
+			$(this.endScreen.gameOver.text(this.winner));
+		}
 	}

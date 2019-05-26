@@ -24,7 +24,7 @@
         var sheet=new Image();
         sheet.src="goblinLeft.png";
 
-        var fps = 15;
+        var fps = 20;
 
         this.health = 100;
 		this.xSpd = 10000;

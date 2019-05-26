@@ -47,6 +47,7 @@
 			$(this.healthbar).css({'width':percentage+'%'});
 			if(this.health <= 0){
 				this.game.endGame();
+				
 				$(_this.game.endScreen.screen).css({"display":"block"});
 			}
 		}

@@ -1,69 +1,66 @@
 	function ArcherGoblin(game,side){
 		var _this = this;
 		Character.apply(this,arguments);
+		
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({position:'absolute',top:parseInt(game.elem.css('height'))-65,left:100})
-			.attr({height:72,width:360/5});
-	//	console.log($(this.elem).css('height'));
+			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:800})
+			.attr({height:73,width:580/8});
+		this.game.elem.append(this.elem);
+		
 		if(this.side == "player1"){
-			this.addedFront = $(this.elem).css('width');
+			this.addedFront = $(this.elem).attr('width');
 		}else{
 			this.addedFront = 0;
 		}
+		
 		this.ctx = this.elem.getContext('2d');
 		this.ctx.translate(0,0);
 		this.ctx.beginPath();
-		//console.log($(this.elem).attr('width')+$(this.elem).height)
-	//	game.elem.append(this.elem);
+		
+        var sheet=new Image();
+        sheet.src="goblinArcherSpreadSheet2.png";
+		
+        var fps = 10;
+		
         var spritePosition=0;
         var spriteWidth=360/5;
         var spriteHeight=72;
         var spriteCount=5;
-		
+        
         this.health = 100;
 		this.xSpd = 10000;
-		this.range = 300;
+		this.range = 400;
 		this.dmg = 5;
-		this.health = 100;
+		this.side=side;
 		this.moving = true;
-		this.game.elem.append(this.elem);
-		this.ctx.fillStyle = '';
-		this.ctx.fillRect(0,0,spriteWidth*2,spriteHeight*2);
-        var sheet=new Image();
-
-        sheet.src="goblinArcherSpreadSheet2.png";
-
-        var fps = 15;
 		this.inRange = false;
-
-				this.animateMove = function(){
-  			setTimeout(function(){
-
+		this.attacking = false;
+		this.attackSpeed = 400;
+		this.attackTimer;
+		
+		this.animateMove = function(){
+            setTimeout(function(){
 				if(_this.health>0){
 					if(_this.inRange == true && _this.attacking ==false){
-                    	attackTimer = setInterval(function(){_this.attack();},1000,'linear');
+                    	_this.attackTimer = setInterval(function(){_this.attack();},400,'linear');
                     	_this.attacking = true;
+						_this.moving = false;
+						$(_this.elem).stop();
                     }
-					//   requestAnimationFrame(_this.animateMove);
                    if(_this.inRange == false){
+						
 					   	if(_this.moving == false){
-							_this.move(1200);
-							clearInterval(attackTimer);
+							_this.move(0);
+							clearInterval(_this.attackTimer);
+							_this.attacking =false;
+							_this.moving = true;
 						}
-					   requestAnimationFrame(_this.animateMove);
+				   }
+				   
+						requestAnimationFrame(_this.animateMove);
 
-				   }else{
-					   	if(_this.moving == true){
-							$(_this.elem).stop();
-
-						}
-						_this.attack();
-					}
-					
                 }
-
-
                 // Drawing code goes here
                 _this.ctx.clearRect(0,0,$(_this.elem).attr('width'),$(_this.elem).attr('height'));
                 _this.ctx.drawImage(sheet,spritePosition*spriteWidth,0,spriteWidth,spriteHeight,0,0,spriteWidth,spriteHeight);
@@ -76,22 +73,15 @@
 
             }, 1000 / fps);
         };
-		var i =0;
-		this.attack = function(){
-			//target.setHealth(this.dmg);
-			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-			var arrow = new Arrow(loc,this.game,5,this.range);
-			if(i==0){
-				$(arrow.elem).css({backgroundColor:'pink'});
-				i=1;
-			}else{
-				i=0;
-			}
-			game.elem.append(arrow.elem);
-		//	console.log(side);
-			game.weapons[side].push(arrow);
-		}
 
+		this.attack = function(){
+			var width = parseInt($(this.elem).css('width'));
+			var loc = [parseInt($(this.elem).css('left'))+width,$(this.elem).css('top')];
+			var arrow = new Arrow(loc,this.game,5,this.range,this.side);
+			game.elem.append(arrow.elem);
+			game.weapons[side].push(arrow);
+		
+		}
 
 		sheet.onload=function(){
             _this.animateMove();
@@ -99,3 +89,4 @@
         }
 		_this.move(1200);
 	}
+
