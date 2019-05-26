@@ -16,6 +16,7 @@ function EndScreen(game){
        $(_this.game.endScreen.screen).css({"display":"none"});
        $(_this.game.startScreen.screen).css({"display":"none"});
        $(_this.game.objectiveAndRules.screen).css({"display":"none"});
+	   _this.game.startGame();
    });
 
   this.homeScreen = $("<div/>")

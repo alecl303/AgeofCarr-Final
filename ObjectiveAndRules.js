@@ -24,9 +24,9 @@ function ObjectiveAndRules(game){
     .css({position:"absolute",top:500,left:430,fontWeight:"bold",height:"auto",width:"145",padding:10,backgroundColor:"yellow",fontSize:50,textAlign:'center'})
     .text("PLAY")
   	.click(function(){
-      $(_this.screen).css({"display":"none"});
-      $(_this.game.startScreen.screen).css({"display":"none"});
-
+		$(_this.screen).css({"display":"none"});
+		$(_this.game.startScreen.screen).css({"display":"none"});
+		_this.game.startGame();
 //      $(_this.game.endScreen.screen).css({"display":"block"});
 
     });

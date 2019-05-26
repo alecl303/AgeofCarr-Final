@@ -9,7 +9,9 @@ function StartScreen(game){
 			.css({backgroundColor: "yellow",zIndex:101,height:60,width:200,fontWeight: "bold",fontSize:'4em',margin:"auto",textAlign:"center",position:'relative',top:200,padding:5})
 			.text("PLAY")
 		//	.click(function(){$(_this.screen).css({"display":'none'});});
-			.click(function(){		_this.game.openObjectiveAndRules();	});
+			.click(function(){
+				_this.game.openObjectiveAndRules();	
+			});
 
 		this.instructions = $("<div/>")
 			.css({backgroundColor: "yellow",zIndex:101,height:60,width:520,fontWeight: "bold",fontSize:'4em',margin:"auto",textAlign:"center",position:'relative',top:250,padding:5})
