@@ -7,7 +7,7 @@ function EndScreen(game){
 
   this.gameOver = $("<div/>")
     .css({fontSize:100,color: 'orange', textAlign:'center',zIndex:103})
-    .text("GAME OVER");
+    .html(_this.game.openEndScreen);
 
   this.playAgainBut = $("<div/>")
     .css({position:'absolute',top:300,left:250,height:160,width:300,backgroundColor:'yellow',fontWeight:'bold',fontSize:70,textAlign:'center'})
