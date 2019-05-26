@@ -4,17 +4,19 @@
 		this.game = game;
 		$(elem).keydown(function(evt){
 			if(_this.game.playing){
+				var b1 = _this.game.getP1Base();
+				var b2 = _this.game.getP2Base();
 				if(evt.which == 81){
 					console.log("q");
-					_this.store.buySwordGoblin();
+					_this.store.buySwordGoblin(b1);
 				}
 				if(evt.which == 87){
 					console.log("w");
-					_this.store.buyArcherGoblin();
+					_this.store.buyArcherGoblin(b1);
 				}
 				if(evt.which == 69){
 					console.log("e");
-					_this.store.buyGoku();
+					_this.store.buyGoku(b1);
 				}
 				if(evt.which == 65){
 					console.log("a");
@@ -34,11 +36,11 @@
 				}
 				if(evt.which == 73){
 					console.log("i");
-					_this.store.buyAlien();
+					_this.store.buyAlien(b2);
 				}
 				if(evt.which == 79){
 					console.log("o");
-					_this.store.buyGunner();
+					_this.store.buyGunner(b2);
 				}
 				if(evt.which == 80){
 					console.log("p");
@@ -62,15 +64,15 @@
 				//windows
 				if(evt.which == 103){
 					console.log("7");
-					_this.store.buyAlien();
+					_this.store.buyAlien(b2);
 				}
 				if(evt.which == 104){
 					console.log("8");
-					_this.store.buyGunner();
+					_this.store.buyGunner(b2);
 				}
 				if(evt.which == 105){
 					console.log("9");
-					_this.store.buyAlienBoss();
+					_this.store.buyAlienBoss(b2);
 				}
 				if(evt.which == 100){
 					console.log("4");
@@ -91,15 +93,15 @@
 				///mac
 				if(evt.which == 55){
 					console.log("7");
-					_this.store.buyAlien();
+					_this.store.buyAlien(b2);
 				}
 				if(evt.which == 56){
 					console.log("8");
-					_this.store.buyGunner();
+					_this.store.buyGunner(b2);
 				}
 				if(evt.which == 57){
 					console.log("9");
-					_this.store.buyAlienBoss();
+					_this.store.buyAlienBoss(b2);
 				}
 				if(evt.which == 52){
 					console.log("4");
