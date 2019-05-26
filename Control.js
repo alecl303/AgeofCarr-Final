@@ -18,7 +18,7 @@ function Control(game){
 			$(wrapper).append(_this.leftGoldDisplay);
 			$(wrapper).append(_this.rightGoldDisplay);
 			return wrapper;
-			
+
 		}
 	//CREATING--------------------------------------------------------
 		function leftPlayerControl(){
@@ -40,7 +40,7 @@ function Control(game){
 				.attr({"src":"goblinarcher.jpg"})
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"110px", "border":"1px solid black"});
 			var leftCharacterButton3=$("<img>")
-				.attr({"src":"goblingiant.jpg"})
+				.attr({"src":"goku.png"})
 				.css({"height":"45px", "width":"45px", "position":"absolute", "left":"210px", "border":"1px solid black"});
 			var leftTurretsBox=$("<img>")
 				.attr({"src":"turret.png"})
