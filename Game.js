@@ -4,7 +4,6 @@
 
 
 		this.winner="";
-		this.goldTimer;
 
 		this.control=new Control(this);
 		this.UIinterface= new Interface(this,this.control);
@@ -21,6 +20,7 @@
 		this.weapons = {player1:[],player2:[]};
 		this.collisionTimer;
 		this.inRangeTimer;
+		this.goldTimer;
 		this.draw = function(target){
 
 			this.elem.append(this.UIinterface.elem);
@@ -33,14 +33,19 @@
 			target.append(this.elem);
 		}
 
-	this.goldTImer = setInterval(function(){
-		//any amount income
-		var income = 5;
-		//humanbase
-		_this.characters.player1[0].gold+=income;
-		//alienbase
-		_this.characters.player2[0].gold+=income;
-	},1000);
+		this.startGoldTimer = function(timer){
+			timer = setInterval(function(){
+				//any amount income
+				var income = 5;
+				//humanbase
+				_this.characters.player1[0].addToGold(income);
+				_this.characters.player1[0].updateGoldBar();
+				//alienbase
+				_this.characters.player2[0].addToGold(income);
+				_this.characters.player2[0].updateGoldBar();
+				console.log(_this.characters.player2[0].gold);
+			},1000);
+		}
 
 		this.openEndScreen = function(){
 			$(this.endScreen.gameOver.html("Game Over<br>"+_this.winner+" won!"));
@@ -82,16 +87,18 @@
 			}
 		}
 		this.createBases = function(arrP1,arrP2,game){
-			var base1 = new HumanBase(game,'player1',1000);
-			var base2 = new Alien(game,'player2',1000);
+			var base1 = new HumanBase(game,'player1',1000,0);
+			var base2 = new Alien(game,'player2',1000,0);
 			arrP1.push(base1);
 			arrP2.push(base2);
 			console.log(this.characters.player1)
 				console.log(this.characters.player2)
 		}
+		
 		this.startGame = function(){
 			this.playing = true;
 			this.createBases(this.characters.player1,this.characters.player2,this);
+			this.startGoldTimer(this.goldTimer);
 		}
 		this.checkIfInRange = function(enemy, character){
 			var enmLoc = parseInt($(enemy.elem).css('left'))+parseInt(enemy.addedFront);
@@ -203,5 +210,12 @@
 		this.openEndScreen = function(){
 			$(this.endScreen.gameOver.html("Game Over<br>"+this.winner+" won!"));
 		}
+		this.getP1Base = function(){
+			return this.characters.player1[0];
+		}
+		this.getP2Base = function(){
+			return this.characters.player2[0];
+		}
+		
 
 	}
