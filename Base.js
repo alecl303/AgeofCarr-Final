@@ -5,15 +5,20 @@
 		this.health = health;
 		this.oghealth=health;
 		this.gold = gold;
+		this.goldTimer;
 		this.healthbox=$("<div/>").css({position:'absolute',top:340,"border":"black 2px solid", "height":"30px",backgroundColor:'red','width':250,zIndex:20,borderRadius:15});
  		this.healthbar=$("<div/>").css({'width':'100%',height:30,backgroundColor:'black',zIndex:21,borderRadius:15});
 		this.healthbox.append(this.healthbar);
+
+		this.goldBar = $("<div/>").css({width:200,height:70,backgroundColor:"orange",position:"absolute",top:10,left:420,zIndex:40,border:"2px black solid"});
+
 
 		this.elem = document.createElement('canvas');
 		$(this.elem)
 			.css({zIndex:2,top:600-200,position:'absolute'})
 			.attr({height:200, width:200});
 		this.game.elem.append(this.healthbox);
+		this.game.elem.append(this.goldBar);
 		this.game.elem.append(this.elem);
 
 		this.addedFront = 0;
@@ -28,6 +33,7 @@
 		this.moveToRight = function(){
 			$(this.elem).css({left: 1250-parseInt($(this.elem).attr('width'))});
 			$(this.healthbox).css({left: 1248-parseInt($(this.healthbox).css('width'))});
+			$(this.goldBar).css({left:820-parseInt($(this.goldBar).css('width'))});
 
 		}
 //		this.moveToRight();
@@ -48,7 +54,6 @@
 			$(this.healthbar).css({'width':percentage+'%'});
 			if(this.health <= 0){
 				this.game.endGame();
-				
 				$(_this.game.endScreen.screen).css({"display":"block"});
 				var side = _this.side;
 				var temp = side.substring(side.length-1);
