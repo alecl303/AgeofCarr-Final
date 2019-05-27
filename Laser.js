@@ -6,7 +6,7 @@
 		
 		this.game = game;
 		this.elem = $('<div/>')
-			.css({height:10,width:10,position:'absolute',top:parseInt(loc[1])+20,left:parseInt(loc[0])+72,backgroundColor:'blue'});
+			.css({height:10,width:10,position:'absolute',top:parseInt(loc[1])+30,left:parseInt(loc[0])+45,backgroundColor:'blue'});
 			//.append(
 				//$('<img/>')
 				//	.attr({'src':'bullet.png'})
