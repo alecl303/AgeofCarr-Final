@@ -7,14 +7,13 @@ function AlienTurret1(game,side) {
 	this.attacking = false;
 	this.attackTimer;
 	var fps=5;
-	this.range = -400;
+	this.range = -1200;
 	this.addedFront = 0;
-	this.elem=document.createElement("div");
-	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20"})
+	this.elem=document.createElement("canvas");
+	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20", backgroundColor: "green"})
 		.append($('<img/>').attr({'src':'at1.png'}).css({maxHeight:75,maxWidth:75}));
 		
 	this.attack = function(){
-		console.log("A");
 		var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
 		var bullet = new Bullet(loc,this.game,5,this.range,this.side);
 		game.elem.append(bullet.elem);
@@ -22,7 +21,6 @@ function AlienTurret1(game,side) {
 	}
 	this.respond = function(){
 		setTimeout(function(){
-			console.log("run");
 			if(_this.inRange == true && _this.attacking ==false){
                 _this.attackTimer = setInterval(function(){_this.attack();},400,'linear');
                 _this.attacking = true;

@@ -4,7 +4,7 @@
 		
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:800})
+			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:100})
 			.attr({height:73,width:580/8});
 		this.game.elem.append(this.elem);
 		
@@ -43,7 +43,7 @@
             setTimeout(function(){
 				if(_this.health>0){
 					if(_this.inRange == true && _this.attacking ==false){
-                    	_this.attackTimer = setInterval(function(){_this.attack();},400,'linear');
+                    	_this.attackTimer = setInterval(function(){_this.attack();},500,'linear');
                     	_this.attacking = true;
 						_this.moving = false;
 						$(_this.elem).stop();
@@ -51,7 +51,7 @@
                    if(_this.inRange == false){
 						
 					   	if(_this.moving == false){
-							_this.move(0);
+							_this.move(1200);
 							clearInterval(_this.attackTimer);
 							_this.attacking =false;
 							_this.moving = true;
