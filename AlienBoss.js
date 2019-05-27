@@ -3,7 +3,7 @@ function AlienBoss(game,side){
 	Character.apply(this,arguments);
     this.elem=document.createElement("canvas");
 	$(this.elem)
-		.css({position:'absolute',top:parseInt(game.elem.css('height'))-120,left:1000})
+		.css({position:'absolute',top:parseInt(game.elem.css('height'))-120,left:1200})
 		.attr({height:160,width:1280/8});
 	this.game.elem.append(this.elem);
 	
@@ -16,18 +16,17 @@ function AlienBoss(game,side){
 	this.ctx = this.elem.getContext('2d');
 	this.ctx.translate(0,0);
 	this.ctx.beginPath();
-	
     var sheet=new Image();
     sheet.src="alienboss.png";
-    var fps = 10;
+     var fps = 20;
     var spritePosition=0;
-    var spriteWidth=1280/8;
-    var spriteHeight=160;
-    var spriteCount=8;
+     var spriteWidth=1280/8;
+     var spriteHeight=160;
+     var spriteCount=8;
         
-    this.health = 500;
+     this.health = 500;
 	this.xSpd = 10000;
-	this.range = -18;
+	this.range = -20;
 	this.dmg = 25;
 	this.side=side;
 	this.moving = true;
@@ -75,12 +74,12 @@ function AlienBoss(game,side){
         };
 
 	this.attack = function(){
-		$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left')), top:parseInt($(_this.elem).css('top'))+60,display:'block' })
+		$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))-20, top:parseInt($(_this.elem).css('top'))+60,display:'block' })
 		$(_this.weapon.elem)
 			.animate({opacity:0}
-			,340
+			,3400
 			,function(){
-				$(_this.weapon.elem).css({opacity:1});
+				$(_this.weapon.elem).css({opacity:100});
 					
 			}
 		);
