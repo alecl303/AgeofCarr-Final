@@ -23,6 +23,22 @@
 				this.characters.player1.push(temp);
 			}
 		}
+		this.buyHumanTurret1 = function(base){
+			var cost = 400;
+			if(base.useGold(cost)){
+				var turret = new HumanTurret1(this.game,'player1');		
+				this.characters.player1.push(turret);	
+				$(this.game.elem).append(turret.elem);
+			}
+		}
+		this.buyHumanTurret2 = function(base){
+			var cost = 1000;
+			if(base.useGold(cost)){
+				var turret = new HumanTurret2(this.game,'player1');		
+				this.characters.player1.push(turret);	
+				$(this.game.elem).append(turret.elem);
+			}
+		}
 		//player2
 		this.buyAlien = function(base){
 			var cost = 50;
@@ -49,14 +65,6 @@
 			var cost = 400;
 			if(base.useGold(cost)){
 				var turret = new AlienTurret1(this.game,'player2');		
-				this.characters.player2.push(turret);	
-				$(this.game.elem).append(turret.elem);
-			}
-		}
-		this.buyAlienTurret2 = function(base){
-			var cost = 1000;
-			if(base.useGold(cost)){
-				var turret = new AlienTurret2(this.game,'player2');		
 				this.characters.player2.push(turret);	
 				$(this.game.elem).append(turret.elem);
 			}
