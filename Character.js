@@ -1,7 +1,6 @@
 	function Character(game,side){
 		this.game = game;
 		this.xSpd = '?';
-		this.direction = '?';
 		this.health = '?';
 		this.cost = '?';
 		this.damage = '?';

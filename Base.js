@@ -48,8 +48,7 @@
 		}
 		this.takeDmg = function(dmg){
 			this.health = this.health-dmg;
-			var percentage= (this.health/this.oghealth)*100
-			console.log(percentage);
+			var percentage= (this.health/this.oghealth)*100;
 			$(this.healthbar).css({'width':percentage+'%'});
 			if(this.health <= 0){
 				this.game.endGame();
@@ -57,7 +56,6 @@
 				$(_this.game.endScreen.screen).css({"display":"block"});
 				var side = _this.side;
 				var temp = side.substring(side.length-1);
-				console.log(temp);
 				if(temp==1){
 					_this.game.winner="Player 2";
 				}else if(temp==2){

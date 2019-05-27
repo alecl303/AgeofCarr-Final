@@ -81,6 +81,7 @@
 				}
 				if(evt.which == 101){
 					console.log("5");
+					_this.store.buyAlienTurret1(b2);
 				}
 				if(evt.which == 102){
 					console.log("6");
@@ -110,6 +111,7 @@
 				}
 				if(evt.which == 53){
 					console.log("5");
+					_this.store.buyAlienTurret1(b2);
 				}
 				if(evt.which == 54){
 					console.log("6");

@@ -33,8 +33,8 @@
 			target.append(this.elem);
 		}
 
-		this.startGoldTimer = function(timer){
-			timer = setInterval(function(){
+		this.startGoldTimer = function(){
+			this.goldTimer = setInterval(function(){
 				//any amount income
 				var income = 5;
 				//humanbase
@@ -43,13 +43,11 @@
 				//alienbase
 				_this.characters.player2[0].addToGold(income);
 				_this.characters.player2[0].updateGoldBar();
-				console.log(_this.characters.player2[0].gold);
 			},1000);
 		}
 
 		this.openEndScreen = function(){
 			$(this.endScreen.gameOver.html("Game Over<br>"+_this.winner+" won!"));
-			console.log("winner"+_this.winner);
 		}
 
 		this.destroy = function(obj){
@@ -87,18 +85,16 @@
 			}
 		}
 		this.createBases = function(arrP1,arrP2,game){
-			var base1 = new HumanBase(game,'player1',1000,0);
-			var base2 = new Alien(game,'player2',1000,0);
+			var base1 = new HumanBase(game,'player1',1000,1500);
+			var base2 = new Alien(game,'player2',1000,1500);
 			arrP1.push(base1);
 			arrP2.push(base2);
-			console.log(this.characters.player1)
-				console.log(this.characters.player2)
 		}
 		
 		this.startGame = function(){
 			this.playing = true;
 			this.createBases(this.characters.player1,this.characters.player2,this);
-			this.startGoldTimer(this.goldTimer);
+			this.startGoldTimer();
 		}
 		this.checkIfInRange = function(enemy, character){
 			var enmLoc = parseInt($(enemy.elem).css('left'))+parseInt(enemy.addedFront);
@@ -160,6 +156,7 @@
 		}
 		this.endGame = function(){
 			this.playing = false;
+			clearInterval(this.goldTimer);
 			this.destroy(this.characters.player1[0].healthbox);
 			this.destroy(this.characters.player1[0].healthbox);
 
@@ -171,14 +168,13 @@
 
 			this.destroyArr(this.weapons.player1);
 			this.destroyArr(this.weapons.player2);
-
-			console.log(this.characters.player1);
-
-			console.log(this.characters.player2);
 		}
 		this.destroyArr = function(arr){
 			for(var i = arr.length-1; i >= 0; i--){
 				$(arr[i].elem).stop();
+				if(arr[i].attackTimer!=null){
+					clearInterval(arr[i].attackTimer);
+				}
 				this.destroy($(arr[i].elem));
 				arr.pop();
 			}

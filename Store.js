@@ -45,6 +45,13 @@
 				this.characters.player2.push(temp);
 			}
 		}
-	
+		this.buyAlienTurret1 = function(){
+			var cost = 400;
+			if(base.useGold(cost)){
+				var turret = new AlienTurret1(this.game,'player2');		
+				this.characters.player2.push(turret);	
+				$(this.game.elem).append(turret.elem);
+			}
+		}
 	
 	}
