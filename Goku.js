@@ -4,8 +4,8 @@
 		
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({position:'absolute',top:parseInt(game.elem.css('height'))-62,left:800})
-			.attr({height:73,width:580/8});
+			.css({position:'absolute',top:parseInt(game.elem.css('height'))-73,left:100})
+			.attr({height:73,width:288/8});
 		this.game.elem.append(this.elem);
 		
 		if(this.side == "player1"){
@@ -19,12 +19,12 @@
 		this.ctx.beginPath();
 		
         var sheet=new Image();
-        sheet.src="gunnerRight.png";
+        sheet.src="gokusprite.png";
 		
         var fps = 15;
 		
         var spritePosition=0;
-        var spriteWidth=580/8;
+        var spriteWidth=288/8;
         var spriteHeight=73;
         var spriteCount=8;
         
