@@ -1,4 +1,4 @@
-function AlienTurret1(game,side) {
+function AlienTurret2(game,side) {
 	Character.apply(this,arguments);
 	var _this=this;
 	this.game=game;
@@ -11,14 +11,14 @@ function AlienTurret1(game,side) {
 	this.addedFront = 0;
 	this.elem=document.createElement("div");
 	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20"})
-		.append($('<img/>').attr({'src':'at1.png'}).css({maxHeight:75,maxWidth:75}));
+		.append($('<img/>').attr({'src':'at2.png'}).css({maxHeight:75,maxWidth:75}));
 		
 	this.attack = function(){
 		console.log("A");
 		var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-		var bullet = new Bullet(loc,this.game,5,this.range,this.side);
-		game.elem.append(bullet.elem);
-		game.weapons[side].push(bullet);
+		var ball = new BallProjectile(loc,this.game,20,this.range,this.side);
+		game.elem.append(ball.elem);
+		game.weapons[side].push(ball);
 	}
 	this.respond = function(){
 		setTimeout(function(){
