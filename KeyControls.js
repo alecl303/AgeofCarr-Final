@@ -46,6 +46,7 @@
 				}
 				if(evt.which == 80){
 					console.log("p");
+					_this.store.buyAlienBoss(b2);
 				}
 				if(evt.which == 74){
 					console.log("j");
