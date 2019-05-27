@@ -10,7 +10,7 @@ function AlienTurret1(game,side) {
 	this.range = -400;
 	this.addedFront = 0;
 	this.elem=document.createElement("div");
-	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20", backgroundColor: "green"})
+	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20"})
 		.append($('<img/>').attr({'src':'at1.png'}).css({maxHeight:75,maxWidth:75}));
 		
 	this.attack = function(){
