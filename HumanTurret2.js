@@ -7,12 +7,12 @@
 		this.attacking = false;
 		this.attackTimer;
 		var fps=5;
-		this.range = 350;
+		this.range = 500;
 		this.addedFront = 0;
-		this.dmg = 30;
+		this.dmg = 50;
 		this.elem=document.createElement("div");
 		$(this.elem).css({height:75,width:75, position:"absolute", left:"100px", top: "525px",zIndex:"20"})
-			.append($('<img/>').attr({'src':'crossbow.png'}).css({maxHeight:75,maxWidth:75,zIndex:20}));
+			.append($('<img/>').attr({'src':'ballista.png'}).css({maxHeight:75,maxWidth:75,zIndex:20}));
 			
 		this.attack = function(){
 			var loc = [$(this.elem).css('left'),$(this.elem).css('top')];

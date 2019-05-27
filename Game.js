@@ -59,7 +59,7 @@
 			if(weapon){
 				var weaponLeft = parseInt($(weapon.elem).css('left'));
 				var weaponRight = parseInt($(weapon.elem).css('left')) + parseInt($(weapon.elem).css('width'));
-				if((leftLocChar <= weaponLeft && rightLocChar >= weaponLeft) || (leftLocChar <= weaponRight && rightLocChar >= weaponRight)){
+				if(((leftLocChar <= weaponLeft && rightLocChar >= weaponLeft) || (leftLocChar <= weaponRight && rightLocChar >= weaponRight)) && weapon.elem.css("opacity")>0.99){
 					character.takeDmg(weapon.dmg);
 
 					if(weapon.projectile){
@@ -84,8 +84,8 @@
 			}
 		}
 		this.createBases = function(arrP1,arrP2,game){
-			var base1 = new HumanBase(game,'player1',1000,1500);
-			var base2 = new Alien(game,'player2',1000,1500);
+			var base1 = new HumanBase(game,'player1',1000,800);
+			var base2 = new Alien(game,'player2',1000,800);
 			arrP1.push(base1);
 			arrP2.push(base2);
 		}

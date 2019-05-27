@@ -24,10 +24,10 @@ function AlienBoss(game,side){
      var spriteHeight=160;
      var spriteCount=8;
         
-     this.health = 500;
+     this.health = 300;
 	this.xSpd = 10000;
 	this.range = -20;
-	this.dmg = 25;
+	this.dmg = 35;
 	this.side=side;
 	this.moving = true;
 	this.inRange = false;

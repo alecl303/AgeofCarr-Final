@@ -134,16 +134,6 @@ function Control(game){
 		var rightTurretButton1=$("<img>")
 			.attr({"src":"alienturret1.jpg"})
 			.css({"height":"45px", "width":"45px", "position":"absolute", "left":"10px", "border":"1px solid black"})
-			.mouseover(
-				function(){
-					_this.rightGoldDisplay.html("Cost: $300");
-				}
-			)
-			.mouseout(
-				function(){
-					_this.rightGoldDisplay.html("");
-				}
-			)
 			.click(
 				function(){
 				}

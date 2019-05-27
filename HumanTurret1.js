@@ -7,9 +7,9 @@
 		this.attacking = false;
 		this.attackTimer;
 		var fps=5;
-		this.range = 300;
+		this.range = 400;
 		this.addedFront = 0;
-		this.dmg = 3;
+		this.dmg = 20;
 		this.elem=document.createElement("div");
 		$(this.elem).css({height:75,width:75, position:"absolute", left:"100px", top: "525px",zIndex:"20"})
 			.append($('<img/>').attr({'src':'crossbow.png'}).css({maxHeight:75,maxWidth:75,zIndex:20}));

@@ -8,6 +8,7 @@ function AlienTurret1(game,side) {
 	this.attackTimer;
 	var fps=5;
 	this.range = -400;
+	this.dmg=20;
 	this.addedFront = 0;
 	this.elem=document.createElement("div");
 	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20"})
@@ -15,7 +16,7 @@ function AlienTurret1(game,side) {
 		
 	this.attack = function(){
 		var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
-		var bullet = new Bullet(loc,this.game,5,this.range,this.side);
+		var bullet = new Bullet(loc,this.game,this.dmg,this.range,this.side);
 		game.elem.append(bullet.elem);
 		game.weapons[side].push(bullet);
 	}
