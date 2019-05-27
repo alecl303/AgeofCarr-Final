@@ -77,7 +77,7 @@ function AlienBoss(game,side){
 		$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))-20, top:parseInt($(_this.elem).css('top'))+60,display:'block' })
 		$(_this.weapon.elem)
 			.animate({opacity:0}
-			,3000
+			,3300
 			,function(){
 				$(_this.weapon.elem).css({opacity:100});
 					
