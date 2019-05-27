@@ -28,7 +28,7 @@ function Gunner(game,side){
         var spriteHeight=73;
         var spriteCount=8;
         
-        this.health = 75;
+        this.health = 100;
 		this.xSpd = 10000;
 		this.range = -200;
 		this.dmg = 10;

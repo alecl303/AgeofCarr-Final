@@ -29,7 +29,7 @@
         this.health = 100;
 		this.xSpd = 10000;
 		this.range = 25;
-		this.dmg = 20;
+		this.dmg = 5;
 		this.moving = true;
 		this.game.elem.append(this.elem);
 		

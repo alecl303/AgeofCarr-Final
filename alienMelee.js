@@ -27,7 +27,7 @@ function AlienMelee(game,side){
     this.health = 100;
 	this.xSpd = 10000;
 	this.range = 25;
-	this.dmg = 20;
+	this.dmg = 5;
 	this.side=side;
 	this.moving = true;
 	this.inRange = false;

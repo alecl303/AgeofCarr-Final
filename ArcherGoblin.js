@@ -28,7 +28,7 @@
         var spriteHeight=72;
         var spriteCount=5;
         
-        this.health = 75;
+        this.health = 100;
 		this.xSpd = 10000;
 		this.range = 200;
 		this.dmg = 10;
