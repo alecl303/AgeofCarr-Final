@@ -65,7 +65,6 @@
 					if(weapon.projectile){
 						this.weapons[weapon.side].splice(this.weapons[weapon.side].indexOf(weapon),1);
 						this.destroy(weapon.elem);
-
 					}
 
 					if(character.health < 0){
@@ -122,7 +121,7 @@
 					}
 				}
 
-		}, 300);
+		}, 250);
 
 		this.inRangeTimer = setInterval(
 			function(){
