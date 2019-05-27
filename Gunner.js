@@ -28,10 +28,10 @@ function Gunner(game,side){
         var spriteHeight=73;
         var spriteCount=8;
         
-        this.health = 100;
+        this.health = 75;
 		this.xSpd = 10000;
 		this.range = -200;
-		this.dmg = 5;
+		this.dmg = 10;
 		this.side=side;
 		this.moving = true;
 		this.inRange = false;
