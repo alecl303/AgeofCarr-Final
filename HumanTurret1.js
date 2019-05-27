@@ -7,7 +7,7 @@
 		this.attacking = false;
 		this.attackTimer;
 		var fps=5;
-		this.range = 1200;
+		this.range = 300;
 		this.addedFront = 0;
 		this.dmg = 3;
 		this.elem=document.createElement("div");
