@@ -10,7 +10,7 @@
 		this.healthbox.append(this.healthbar);
 
 		this.goldBar = $("<div/>")
-			.css({width:200,height:70,backgroundColor:"orange",position:"absolute",top:10,left:420,zIndex:40,border:"2px black solid"});
+			.css({width:200,height:50,backgroundColor:"orange",position:"absolute",top:10,left:420,zIndex:40,border:"2px black solid"});
 
 		this.elem = document.createElement('canvas');
 		$(this.elem)
@@ -66,7 +66,7 @@
 		}
 		this.updateGoldBar = function(){
 			var display = "Gold:" + this.gold;
-			this.goldBar.text(display);
+			this.goldBar.text(display).css({fontWeight:'bold',fontSize:20,textAlign:'center'});
 		}
 		this.addToGold = function(income){
 			this.gold+=income;
