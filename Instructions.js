@@ -29,7 +29,7 @@ function Instructions(){
 
 			this.instructions2Desc = $("<div/>")
 				.css({backgroundColor: "skyblue",zIndex:101,height:"auto",width:520,fontSize:'40px',margin:"auto",position:'relative',top:25,padding:5,float:'right'})
-				.html("<b>Characters:</b> <br> 7 - First Character <br> 8 -	Second Character <br> 9	- Third Character <br> <b>Turrents:</b>	<br> 4 - Open Turrents Panel <br> 5 - First Turrent <br> 6 - Second Turrent <br> 1 - Exit Turrents Panel");
+				.html("<b>Characters:</b> <br> I/7 - First Character <br> O/8 -	Second Character <br> P/9	- Third Character <br> <b>Turrents:</b>	<br> J/4 - Open Turrents Panel <br> K/5 - First Turrent <br> L/6 - Second Turrent <br> N/1 - Exit Turrents Panel");
 
 
 		this.draw = function(){
