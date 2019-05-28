@@ -1,6 +1,6 @@
 function Instructions(){
 		var _this = this;
-		
+
 		this.screen = $("<div/>")
 			.css({position: 'absolute',top:0,border: 'black 2px solid',height:600, width:1250,backgroundColor:'blue',zIndex:102,'display':'none'});
 
