@@ -4,7 +4,7 @@ function Gunner(game,side){
 
         this.elem=document.createElement("canvas");
 		$(this.elem)
-			.css({zIndex:600,position:'absolute',top:parseInt(game.elem.css('height'))-62,left:1200})
+			.css({zIndex:600,position:'absolute',top:parseInt(game.elem.css('height'))-62,left:1000})
 			.attr({height:73,width:580/8});
 		this.game.elem.append(this.elem);
 

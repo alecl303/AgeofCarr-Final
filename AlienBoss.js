@@ -3,7 +3,7 @@ function AlienBoss(game,side){
 	Character.apply(this,arguments);
     this.elem=document.createElement("canvas");
 	$(this.elem)
-		.css({zIndex:600,position:'absolute',top:parseInt(game.elem.css('height'))-120,left:1200})
+		.css({zIndex:600,position:'absolute',top:parseInt(game.elem.css('height'))-120,left:1000})
 		.attr({height:160,width:1280/8});
 	this.game.elem.append(this.elem);
 
