@@ -3,16 +3,16 @@ function AlienMelee(game,side){
 	Character.apply(this,arguments);
     this.elem=document.createElement("canvas");
 	$(this.elem)
-		.css({position:'absolute',top:parseInt(game.elem.css('height'))-60,left:1200})
+		.css({zIndex:600,position:'absolute',top:parseInt(game.elem.css('height'))-60,left:1200})
 		.attr({height:80,width:350/6});
 	this.game.elem.append(this.elem);
-	
+
 	if(this.side == "player1"){
 		this.addedFront = $(this.elem).attr('width');
 	}else{
 		this.addedFront = 0;
 	}
-		
+
 	this.ctx = this.elem.getContext('2d');
 	this.ctx.translate(0,0);
 	this.ctx.beginPath();
@@ -23,11 +23,11 @@ function AlienMelee(game,side){
     var spriteWidth=350/6;
     var spriteHeight=80;
     var spriteCount=6;
-        
+
     this.health = 100;
 	this.xSpd = 10000;
 	this.range = 25;
-	this.dmg = 10;
+	this.dmg = 5;
 	this.side=side;
 	this.moving = true;
 	this.inRange = false;
@@ -44,21 +44,21 @@ function AlienMelee(game,side){
 							_this.move(0);
 							_this.moving = true;
 						}
-						
+
 						_this.weapon.elem.stop();
-						
+
 						$(_this.weapon.elem).css({display:'none'});
 				   }
 				   else if(_this.inRange){
 					   	if(_this.moving == true){
 							$(_this.elem).stop();
 							_this.moving = false;
-						} 
+						}
 						_this.attack();
 					}
 					requestAnimationFrame(_this.animateMove);
                 }
-			
+
 
                 // Drawing code goes here
                 _this.ctx.clearRect(0,0,$(_this.elem).attr('width'),$(_this.elem).attr('height'));
@@ -80,7 +80,7 @@ function AlienMelee(game,side){
 			,500
 			,function(){
 				$(_this.weapon.elem).css({left:parseInt($(_this.elem).css('left'))+30});
-					
+
 			}
 		);
 	}
