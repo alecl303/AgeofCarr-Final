@@ -1,8 +1,6 @@
 function Control(game){
 	var _this=this;
-	//FIELDS--------------------------------------------------------
 	this.game=game;
-	//METHODS--------------------------------------------------------
 		this.leftPlayerControl=(function(){return leftPlayerControl();}());
 		this.rightPlayerControl=(function(){return rightPlayerControl();}());
 		this.leftTurretDisplay=(function(){return leftTurretDisplay();}());
@@ -18,9 +16,7 @@ function Control(game){
 			$(wrapper).append(_this.leftGoldDisplay);
 			$(wrapper).append(_this.rightGoldDisplay);
 			return wrapper;
-
 		}
-	//CREATING--------------------------------------------------------
 		function leftPlayerControl(){
 			var characterCost1=$("<span/>").html("$50").css({"height":"45px", "width":"45px","top":45, "position":"absolute", "left":"18px"});
 			var characterCost2=$("<span/>").html("$100").css({"height":"45px", "width":"45px","top":45, "position":"absolute", "left":"115px"});
