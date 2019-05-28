@@ -3,7 +3,7 @@ function Game(){
 
 	this.background	= document.createElement('canvas');
 	$(this.background)
-		.css({zIndex:2,position:'absolute',top:0,left:0,backgroundColor:"skyblue"})
+		.css({zIndex:-2,position:'absolute',top:0,left:0,backgroundColor:"skyblue"})
 		.attr({height:600, width:1250});
 
 	this.drawBackground = function(){
