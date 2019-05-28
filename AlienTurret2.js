@@ -1,4 +1,4 @@
-function AlienTurret2(game,side) {
+function AlienTurret2(game,side){
 	Character.apply(this,arguments);
 	var _this=this;
 	this.game=game;
@@ -13,7 +13,6 @@ function AlienTurret2(game,side) {
 	this.elem=document.createElement("div");
 	$(this.elem).css({height:75,width:75, position:"absolute", left:"1100px", top: "525px",zIndex:"20"})
 		.append($('<img/>').attr({'src':'at2.png'}).css({maxHeight:75,maxWidth:75}));
-		
 	this.attack = function(){
 		console.log("A");
 		var loc = [$(this.elem).css('left'),$(this.elem).css('top')];
